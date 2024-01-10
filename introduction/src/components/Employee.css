@@ -1,0 +1,17 @@
+.Team{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+img{
+    border-radius: 50%;
+}
+.icons{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+h1 ,.role{
+    color: blue;
+    font-weight: 900;
+}

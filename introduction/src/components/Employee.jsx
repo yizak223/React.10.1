@@ -1,3 +1,4 @@
+import './Employee.css'
 function Employee(props){
     // const person = {
     //     name: 'lisa',
@@ -7,12 +8,18 @@ function Employee(props){
     console.log(props);
     return(
     <div> 
-        <h1>Employee Component</h1>
-        <h1>{props.person.name}</h1>
-        <h1>{props.person.age}</h1>
-        <img src={props.person.Image} alt="" />
-        <p>{props.numbers}</p>
-      <span>END Component</span>
+        <img src={props.person.Image} alt="" width='300px' height='300px' />
+        <h2>{props.person.name}</h2>
+        <p className='role'>{props.person.role}</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae cum, sequi ex a amet facere, eius voluptatibus aperiam iste, magni aliquam lib
+            ero nostrum fugiat similique itaque voluptatem aspernatur nam. Impedit.</p>
+        <div className='icons'>
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+        </div>
+
     </div>
     )
 }
