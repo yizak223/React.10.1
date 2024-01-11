@@ -14,10 +14,10 @@ function Employee(props){
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae cum, sequi ex a amet facere, eius voluptatibus aperiam iste, magni aliquam lib
             ero nostrum fugiat similique itaque voluptatem aspernatur nam. Impedit.</p>
         <div className='icons'>
-            <i class="fa fa-facebook" aria-hidden="true"></i>
-            <i class="fa fa-twitter" aria-hidden="true"></i>
-            <i class="fa fa-instagram" aria-hidden="true"></i>
-            <i class="fa fa-linkedin" aria-hidden="true"></i>
+            <i className="fa fa-facebook" aria-hidden="true"></i>
+            <i className="fa fa-twitter" aria-hidden="true"></i>
+            <i className="fa fa-instagram" aria-hidden="true"></i>
+            <i className="fa fa-linkedin" aria-hidden="true"></i>
         </div>
 
     </div>

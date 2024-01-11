@@ -6,6 +6,8 @@ import Employee2 from './components/Employee2'
 import './App.css'
 import Images from './components/Image'
 import Counter from './components/Counter'
+import Names from './pages/Names'
+import Products from './pages/productes'
 
 
 function App() {
@@ -54,6 +56,8 @@ function App() {
         <Employee2 man={man1}/>
         <div>
         <Images/>
+        <Names/>
+        <Products/>
         </div>
       </div>
 
