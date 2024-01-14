@@ -1,0 +1,79 @@
+/* BudgetTracker.css */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 20px;
+    font-family: "Arial", sans-serif;
+  }
+  
+  .budgetContainer{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .formInput {
+    margin-bottom: 10px;
+    padding: 12px;
+    width: calc(100% - 24px);
+    box-sizing: border-box;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+  }
+  
+  .formInput:focus {
+    border-color: #4caf50;
+  }
+  
+  .label {
+    margin-right: 10px;
+    color: #333;
+  }
+  
+  .select {
+    margin-bottom: 10px;
+    padding: 12px;
+    width: calc(100% - 24px);
+    box-sizing: border-box;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+  }
+  
+  .select:focus {
+    border-color: #4caf50;
+  }
+  
+  .button {
+    cursor: pointer;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #45a049;
+  }
+  
+  .budgetCard {
+    flex: 0 0 calc(33.33% - 20px);
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    color: #333;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  
+  /* Add more styles as needed */
+  
