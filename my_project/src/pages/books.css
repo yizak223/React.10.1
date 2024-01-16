@@ -1,0 +1,36 @@
+/* ProductCard.css */
+
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .product-title {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+    
+    .product-price {
+      font-size: 1.2rem;
+      color: #007bff; /* Blue color for price */
+      margin-bottom: 12px;
+    }
+    
+    .product-image {
+      width: 15vw;
+      height: 15vw;
+      border-radius: 4px;
+    }
+    

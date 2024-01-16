@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useEffect } from "react";
 import ProductCard from "../components/ProductCard";
 import './Product.css'
 
@@ -23,8 +23,21 @@ function Product() {
         setProducts([...products, {...product}])
         console.log(products);
     }
+    const fetchUrl=()=>{
+        fetch('https://fakestoreapi.com/products')
+            .then(response => response.json())
+            .then(data=>{
+                console.log(data);
+                setProducts(data)
+            })
+    }
+    useEffect(()=>{
+        fetchUrl()
+        },
+        [])
     return (
             <div>
+                {/* <button onClick={useEffect}>add product</button> */}
                 <form onSubmit={submitHandler}>
                     <input onChange={changeHandler} type="text"  name="title"/>
                     <input onChange={changeHandler} type="text"  name="price"/>

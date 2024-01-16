@@ -1,54 +1,81 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BudgetCard from "../components/BudgetCard";
 import '../pages/BudgetTracker.css'
 
 //{title:'gas',category:'fuel',amount:1000,type:'income'}
 function BudgetTracker() {
-    const [budgetTrackers,setbudgetTrackers] = useState([])
-    
+    const [budgetTrackers, setbudgetTrackers] = useState([])
     const [budgetTracker, setbudgetTracker] = useState({})
+    const [edit, setedit] = useState(false)
 
-    const changeBudgetTracker =(e)=>{
-        budgetTracker[e.target.name]=e.target.value
-        setbudgetTracker({...budgetTracker})
+    const changeBudgetTracker = (e) => {
+        budgetTracker[e.target.name] = e.target.value
+        setbudgetTracker({ ...budgetTracker })
         console.log(budgetTracker);
     }
-    const submitBudgetTracker =(e)=>{
+    const submitBudgetTracker = (e) => {
         e.preventDefault()
+        budgetTracker.id = Math.floor(Math.random() * 1000000)
         console.log([...budgetTrackers]);
-            setbudgetTrackers([...budgetTrackers,{...budgetTracker}]) 
-        
+        // localStorage.setItem('budgetTrackers', JSON.stringify(budgetTrackers));
+        setbudgetTrackers([...budgetTrackers, { ...budgetTracker }])
     }
-    return(
-       <div className="container">
-        <h1>Your Budget</h1>
-        <form onSubmit={submitBudgetTracker}>
-                    <input className="formInput" onChange={changeBudgetTracker} type="text" placeholder="what's title?" name="title"/>
-                    <label className="label" htmlFor="category">Category: </label>
-                        <select className="formInput" onChange={changeBudgetTracker}  name="category" id="">
-                            <option value="mortgage">mortgage</option>
-                            <option value="shopping">shopping</option>
-                            <option value="fuel">fuel</option>
-                            <option value="Loans">Loans</option>
-                            <option value="salary">salary</option>
-                        </select>
-                    <input className="formInput" placeholder="How much?" onChange={changeBudgetTracker} type="text"  name="amount"/>
-                    <label className="label" htmlFor="type">Type: </label>
-                        <select className="formInput" onChange={changeBudgetTracker} name="type" id="">
-                            <option value="income">income</option>
-                            <option value="outcome">outcome</option>
-                        </select>
-                    <button className="button" type="submit">Add Product</button>
-                </form>
-                <div className="budgetContainer">
-            {budgetTrackers.map((budgetTracker,index)=>{
-                return (
-                <BudgetCard budgetTracker={budgetTracker} key={index}/>
-                )
-            })}
+    useEffect(() => {
+        const budgetData = JSON.parse(localStorage.getItem('budgetTrackers'))
+        if (budgetData) {
+            setbudgetTrackers(budgetData)
+        }
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('budgetTrackers', JSON.stringify(budgetTrackers));
+    },
+        [budgetTrackers])
+
+    const deleteBudgetTracker = (budgetTracker) => {
+        const filtered = budgetTrackers.filter((item) => {
+        return item.id!== budgetTracker.id
+        })
+        setbudgetTrackers(filtered)
+    }
+    const showForm=()=>{
+        setedit(!edit)
+        console.log(edit);
+    }
+    return (
+        
+        <div className="container">
+            <button className={!edit?"buttonToShowForm":'hideForm'} onClick={showForm}>{!edit?'show':'hide'} form</button>
+            <h1>Your Budget Tracker</h1>
+            {edit?
+            <form  onSubmit={submitBudgetTracker}>
+                <input className="formInput" onChange={changeBudgetTracker} type="text" placeholder="what's title?" name="title" />
+                <label className="label" htmlFor="category">Category: </label>
+                <select className="formInput" onChange={changeBudgetTracker} name="category" id="">
+                    <option value="Select an option" disabled selected>Select an option</option>
+                    <option value="mortgage">mortgage</option>
+                    <option value="shopping">shopping</option>
+                    <option value="fuel">fuel</option>
+                    <option value="Loans">Loans</option>
+                    <option value="salary">salary</option>
+                </select>
+                <input className="formInput" placeholder="How much?" onChange={changeBudgetTracker} type="text" name="amount" />
+                <label className="label" htmlFor="type">Type: </label>
+                <select className="formInput" onChange={changeBudgetTracker} name="type" id="">
+                    <option value="Select an option" disabled selected>Select an option</option>
+                    <option value="income">income</option>
+                    <option value="outcome">outcome</option>
+                </select>
+                <button className="button" type="submit">Add Product</button>
+            </form>:null}
+            <div className="budgetContainer">
+                {budgetTrackers.map((budgetTracker, index) => {
+                    return (
+                        <BudgetCard deleteBudgetTracker={deleteBudgetTracker}  budgetTracker={budgetTracker} key={index} />
+                    )
+                })}
             </div>
-       </div>
+        </div>
     )
 }
 export default BudgetTracker;

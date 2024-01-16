@@ -1,5 +1,10 @@
 /* BudgetTracker.css */
-
+.income{
+  color: #57cf5d;
+}
+.outcome{
+  color: #ee221e;
+}
 .container {
     display: flex;
     flex-direction: column;
@@ -7,7 +12,13 @@
     padding: 20px;
     font-family: "Arial", sans-serif;
   }
-  
+  .show{
+    display: block;
+  }
+  .hide{
+    display: none;
+  }
+
   .budgetContainer{
     display: flex;
     flex-wrap: wrap;
@@ -21,7 +32,7 @@
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    transition: border-color 0.3s;
+    transition: 0.3s;
   }
   
   .formInput:focus {
@@ -41,7 +52,7 @@
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    transition: border-color 0.3s;
+    transition: 0.3s;
   }
   
   .select:focus {
@@ -56,7 +67,7 @@
     border: none;
     border-radius: 5px;
     font-size: 16px;
-    transition: background-color 0.3s;
+    transition: 0.3s;
   }
   
   .button:hover {
@@ -64,7 +75,7 @@
   }
   
   .budgetCard {
-    flex: 0 0 calc(33.33% - 20px);
+    /* flex: 0 0 calc(33.33% - 20px); */
     margin: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -74,6 +85,45 @@
     box-sizing: border-box;
     font-size: 16px;
   }
-  
-  /* Add more styles as needed */
-  
+  .remove{
+    background-color: #ee221e;
+    padding: 15px;
+  }
+
+.buttonToShowForm {
+  background-color: #4CAF50; /* Green background color */
+  color: white; /* White text color */
+  padding: 10px 15px; /* Padding around the text */
+  font-size: 16px; /* Font size */
+  border: none; /* Remove border */
+  cursor: pointer; /* Add cursor pointer on hover */
+  border-radius: 8px;
+  width: 30vw;
+  transition: 0.3s;
+}
+.hideForm{
+  background-color: #ee240d; /* Green background color */
+  color: white; /* White text color */
+  padding: 10px 15px; /* Padding around the text */
+  font-size: 16px; /* Font size */
+  border: none; /* Remove border */
+  cursor: pointer; /* Add cursor pointer on hover */
+  border-radius: 8px;
+  width: 30vw;
+  transition: 0.3s;
+}
+.hideForm:hover{
+  background-color: #dc2915; 
+}
+
+/* Add hover effect for the button */
+.buttonToShowForm:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+@media only screen and(max-width:600px){
+  .budgetCard{
+      flex: none;
+      width: 50vw;
+  }
+}

@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BookCard from "../components/BookCard";
+import './books.css'
+
 // {
 //     title: 'The First Chapter',
 //     cover: 'https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg',
@@ -14,12 +16,13 @@ import BookCard from "../components/BookCard";
 //     title: 'The Third Chapter',
 //     cover: 'https://s26162.pcdn.co/wp-content/uploads/sites/2/2022/05/Book.jpg',
 //     description: 'long description of the third chapter'
-// }
+// }    {title: 'The First Chapter',
+        // cover: 'https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg',
+        //  description: 'long description of the first chapter'}
 function Books() {
-    const [books,setBooks] = useState([    {title: 'The First Chapter',
-        cover: 'https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg',
-         description: 'long description of the first chapter'}]);
+    const [books,setBooks] = useState([]);
     const [book,setBook] = useState({});
+    // const booksArrayLocalStorage = JSON.parse(localStorage.getItem('books')) || [];
 
     const ChangeHandler=(e)=>{
         book[e.target.name]=e.target.value
@@ -27,20 +30,57 @@ function Books() {
     }
     const SubmitHandler=(e)=>{
         e.preventDefault()
-        console.log([...books]);
+        book.id=Math.random()*21000
+        // console.log([...books]);
+        // localStorage.setItem('books',JSON.stringify(books));
         setBooks([...books, {...book}])
-        
     }
+    useEffect(()=>{
+        const bookData = JSON.parse(localStorage.getItem('books')) ;
+        if (bookData) {
+            setBooks(bookData)
+        }
+        // console.log(booksArrayLocalStorage);
+    },
+    [])
+    // localStorage.clear()
+    useEffect(()=>{
+        localStorage.setItem('books',JSON.stringify(books))
+    },[books])
+    
+        // console.log(removeBook);
+        // btnClass.forEach((btn,i) => {
+            // btn.addEventListener('click',()=>{})
+            // let popIt = books.indexOf(element.title)
+            // console.log(popIt);
+            // if(element.title==books[i].title){
+            //     console.log(element.title);
+            //     console.log(books[i].title);
+                // console.log(popIt);
+                // books.pop(books[i])
+                // console.log(element);
+            // }
+            // setBooks([...books])
+        // });
+        const dltBook = (book)=>{
+            const filteredBook = books.filter(item =>{
+                return item.id !== book.id
+            });
+            setBooks(filteredBook)
+        }
     return (
-        <div>
+        <div >
               <form onSubmit={SubmitHandler}>
                     <input onChange={ChangeHandler} type="text"  name="title"/>
                     <input onChange={ChangeHandler} type="text"  name="description"/>
                     <input onChange={ChangeHandler} type="text"  name="cover"/>
-                    <button type="submit">Add Product</button>
+                    <button type="submit">Add Book</button>
                 </form>
         {  books.map((book, index) => {
-            return <BookCard book={book} key={`bk_${index}`} />
+            return<> 
+            <BookCard dltBook={dltBook} book={book} key={`bk_${index}`} />
+            {/* <button key={index} dltBook={dltBook} className="btnClass">remove book</button> */}
+            </>
         })}
         </div>
     )
