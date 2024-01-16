@@ -9,7 +9,7 @@ function BudgetCard(props) {
             <h4 className={props.budgetTracker.type === 'income' ? 'income' : 'outcome'}>
                 Type: {props.budgetTracker.type}
             </h4>
-            <button className='remove button' onClick={() => props.deleteBudgetTracker(props.budgetTracker)}>remove</button>
+            <button onClick={() => props.deleteBudgetTracker(props.budgetTracker)}>remove</button>
         </div>
     )
 }

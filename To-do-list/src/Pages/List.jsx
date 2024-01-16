@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import MissionCard from "../Components/MissionCard";
+import '../pages/BudgetTracker.css'
+
 
 function List() {
     const [edit, setEdit] = useState(false)
@@ -38,15 +40,16 @@ function List() {
         localStorage.setItem("missions", JSON.stringify(missions))
     },[missions])
     return (
-        <div>
-            <button onClick={ShowForm}>{edit ? 'show' : 'hide'} form</button>
+        <div className="container">
+            <button className={!edit?"buttonToShowForm":'hideForm'} onClick={ShowForm}>{edit ? 'show' : 'hide'} form</button>
             <h1>Your To Do List</h1>
-            {!edit ? <form onSubmit={addMission}>
-                <input onChange={changeMission} type="text" name="title" placeholder="What's on your mind?" />
-                <input onChange={changeMission} type="text" name="description" placeholder="description" />
-                <input onChange={changeMission} type="date" name="due_date"/>
-                <button id="addBtn">Add Mission</button>
+            {!edit ? <form className="myForm" onSubmit={addMission}>
+                <input className="myInput" onChange={changeMission} type="text" name="title" placeholder="What's on your mind?" />
+                <input className="myInput" onChange={changeMission} type="text" name="description" placeholder="description" />
+                <input className="myInput" onChange={changeMission} type="date" name="due_date"/>
+                <button className="addBtn" id="addBtn">Add Mission</button>
             </form> : null}
+            <div className="missionContainer">
             {
                 missions.map((mission) => {
                     return (
@@ -54,6 +57,7 @@ function List() {
                     )
                 })
             }
+            </div>
         </div>
     )
 }

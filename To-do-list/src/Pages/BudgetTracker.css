@@ -1,0 +1,64 @@
+.container {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .buttonToShowForm {
+    background-color: #eb1111;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .hideForm {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .myForm {
+    margin-top: 20px;
+  }
+  
+  .myInput {
+    margin: 5px;
+    padding: 8px;
+  }
+  
+  .addBtn {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .missionContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .missionCard {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    width: 200px;
+  }
+  
+  .remove {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
