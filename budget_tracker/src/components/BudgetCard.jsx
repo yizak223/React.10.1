@@ -1,4 +1,4 @@
-import '../pages/BudgetTracker.css'
+import '../pages/BudgetTracker/BudgetTracker.css'
 
 function BudgetCard(props) {
     return (
@@ -9,7 +9,7 @@ function BudgetCard(props) {
             <h4 className={props.budgetTracker.type === 'income' ? 'income' : 'outcome'}>
                 Type: {props.budgetTracker.type}
             </h4>
-            <button onClick={() => props.deleteBudgetTracker(props.budgetTracker)}>remove</button>
+            <button className='remove button' onClick={() => props.deleteBudgetTracker(props.budgetTracker)}>remove</button>
         </div>
     )
 }

@@ -1,4 +1,8 @@
 /* BudgetTracker.css */
+body{
+  margin: 0;
+  background-color: #d5d3d3;
+}
 .income{
   color: #57cf5d;
 }

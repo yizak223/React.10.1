@@ -1,10 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import BudgetCard from "../components/BudgetCard";
-import '../pages/BudgetTracker.css'
+import BudgetCard from "../../components/BudgetCard";
+import '../BudgetTracker/BudgetTracker.css'
 
 //{title:'gas',category:'fuel',amount:1000,type:'income'}
-function BudgetTracker() {
+function BudgetTracker(props) {
     const [budgetTrackers, setbudgetTrackers] = useState([])
     const [budgetTracker, setbudgetTracker] = useState({})
     const [edit, setedit] = useState(false)
@@ -65,8 +65,10 @@ function BudgetTracker() {
                     <option value="Select an option" disabled selected>Select an option</option>
                     <option value="income">income</option>
                     <option value="outcome">outcome</option>
-                </select>
-                <button className="button" type="submit">Add Product</button>
+                </select>  {
+                        props.name!=null?<button className="button" type="submit">Add Product</button>
+                        :null
+                }
             </form>:null}
             <div className="budgetContainer">
                 {budgetTrackers.map((budgetTracker, index) => {

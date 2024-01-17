@@ -6,16 +6,24 @@ import BookCard from './components/BookCard'
 import Books from './pages/Books'
 import Product from './pages/Product'
 import ProductCard from './components/ProductCard'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 
 
 function App() {
-
-  return (   
-      <div>
-        <Books/>
-        {/* <Product/> */}
-    </div>
+const [edit, setEdit] = useState(false)
+console.log(edit);
+  return (
+    <BrowserRouter>
+      <nav>
+          <Link className={edit?'active':null} to='/Books'> Books</Link>
+          <Link className={edit?'active':null} to='/Products'> Product</Link> 
+      </nav>
+      <Routes>
+        <Route path='/Books' element={<Books />} />
+        <Route path='/Products' element={<Product />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

@@ -1,42 +1,21 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+nav {
+  background-color: #4020df; /* Set a green background color */
+  padding: 15px;
+  text-align: center; /* Center the links */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+nav a {
+  color: #fff; /* Set the text color to white */
+  text-decoration: none;
+  margin: 0 15px; /* Add some spacing between links */
+  font-size: 16px; /* Adjust the font size */
+  transition: color 0.3s ease-in-out; /* Smooth transition for color changes */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav a:hover{
+  color: #FFD700; /* Change text color to gold on hover and when active */
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.active{
+  color: #000000;
 }

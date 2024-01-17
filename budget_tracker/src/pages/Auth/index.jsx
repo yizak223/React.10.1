@@ -1,0 +1,35 @@
+import SignUp from "../../components/SignUp"
+import { useState } from "react"
+import Login from "../../components/LogIn"
+import '../Auth/Auth.css'
+function LogIn(props) {
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [formData, setFormData] = useState({})
+
+    const handleInputChange = (e) => {
+        console.log(e);
+        setFormData({...formData,[e.target.name]: e.target.value})
+    }
+    const submitForm = (e) => {
+        e.preventDefault()
+        console.log(formData)
+        props.setName(e.target.name)
+    }
+    return(
+        <div>
+            {
+                isLoggedIn?
+                <div className="LogIn">
+                    <SignUp submitForm={submitForm} handleInputChange={handleInputChange}/>
+                   <p onClick={() => setIsLoggedIn(!isLoggedIn)}>Log in</p>
+                </div>
+                :
+                <div className="SignUp">
+                     <Login submitForm={submitForm} handleInputChange={handleInputChange}/>
+                    <p onClick={() => setIsLoggedIn(!isLoggedIn)}>Sign up</p>
+                </div>
+            }
+        </div>
+    )
+}
+export default LogIn

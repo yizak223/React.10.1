@@ -40,3 +40,25 @@
 .read-the-docs {
   color: #888;
 }
+/* Add this CSS to your stylesheet or in a style tag in your component */
+
+nav {
+  background-color: #4CAF50; /* Set a green background color */
+  padding: 15px;
+  text-align: center; /* Center the links */
+}
+
+nav a {
+  color: #fff; /* Set the text color to white */
+  text-decoration: none;
+  margin: 0 15px; /* Add some spacing between links */
+  font-size: 16px; /* Adjust the font size */
+  transition: color 0.3s ease-in-out; /* Smooth transition for color changes */
+}
+
+nav a:hover{
+  color: #FFD700; /* Change text color to gold on hover and when active */
+}
+.active{
+  color: #FFD700;
+}
