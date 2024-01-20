@@ -1,0 +1,23 @@
+/* Add this CSS to your stylesheet or in a style tag in your component */
+
+button {
+    background-color: #4CAF50; /* Green background color */
+    color: #fff; /* White text color */
+    padding: 10px 20px; /* Padding for better appearance */
+    font-size: 16px; /* Font size */
+    border: none; /* Remove default button border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Add pointer cursor on hover */
+    transition: background-color 0.3s ease-in-out; /* Smooth background color transition */
+  }
+  
+  button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  button:disabled {
+    background-color: #ccc; /* Gray background when disabled */
+    color: #666; /* Darker gray text when disabled */
+    cursor: not-allowed; /* Change cursor to not-allowed when disabled */
+  }
+  

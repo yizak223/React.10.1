@@ -49,3 +49,11 @@ div {
     text-decoration: underline;
   }
   
+  .lgin-signup{
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: none;
+  }
+.lgin-signup:hover{
+  text-decoration: underline;
+}
