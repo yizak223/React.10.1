@@ -12,7 +12,6 @@ function SignUp(props) {
                 <input onChange={props.handleInputChangeSignUp} name='password2' type="password" placeholder="enter your password again" />
                 <button>Submit</button>
             </form>
-
         </div>
     )
 }

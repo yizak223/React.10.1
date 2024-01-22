@@ -48,7 +48,6 @@ function Auth(props) {
         signInWithEmailAndPassword(auth, formDataLogIn.email, formDataLogIn.password)
         .then((userCredential) => {
             alert('hello user')
-            e.preventDefault()
           // Signed in 
           const user = userCredential.user;
           console.log(user);
@@ -89,9 +88,6 @@ function Auth(props) {
                <p className="lgin-signup" onClick={() => props.setIsLoggedIn(!props.isLoggedIn)}>Sign up</p>
             </div>
             }
-                
-                
-               
         </div>
     )
 }

@@ -1,0 +1,74 @@
+button {
+    background-color: #4CAF50; 
+    color: #fff; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease-in-out; 
+  }
+  
+  button:hover {
+    background-color: #45a049; 
+  }
+  
+  button:disabled {
+    background-color: #ccc; 
+    color: #666; 
+    cursor: not-allowed; 
+  }
+ 
+div {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  div.LogIn {
+    background-color: #f0f0f0;
+  }
+
+  div.SignUp {
+    background-color: #f9f9f9;
+  }
+
+  p.toggle-btn {
+    text-align: center;
+    cursor: pointer;
+    color: #007bff;
+  }
+  
+  p.toggle-btn:hover {
+    text-decoration: underline;
+  }
+  
+  .lgin-signup{
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: none;
+  }
+.lgin-signup:hover{
+  text-decoration: underline;
+}

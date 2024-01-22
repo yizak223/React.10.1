@@ -8,8 +8,7 @@ import Home from './pages/Home'
 import Auth  from './pages/Auth'
 import NavBar from './components/NavBar/navBar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { dB, signUp } from "./config/fireBaseConfig"
-import { auth } from './config/fireBaseConfig'
+import { dB, auth } from "./config/fireBaseConfig"
 import { onAuthStateChanged, signOut  } from 'firebase/auth'
 // import './firebase'; // Add this line prevent firebase not loading error
 // import { getFirestore, addDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
@@ -50,7 +49,6 @@ function App() {
         <Route path='/LogIn' element={<Auth 
         isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} 
         setName={setName} name={name} 
-        signUp={signUp}
         auth={auth}
         />} />
       </Routes>
