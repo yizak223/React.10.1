@@ -1,9 +1,6 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
 
 function NavBar(props) {
-    // const [counter, setcounter] = useState(0)
-    console.log(props.counter);
     return(
         <nav>
             <Link onClick={() => props.setcounter(0)} className={props.counter==0?'active':null} to='/Home'> Home</Link>

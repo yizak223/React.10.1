@@ -1,15 +1,12 @@
-import '../LogIn/LogIn.css'
+import '../SignUp/signUp.css'
 
-function LogIn(props){
-    return(
+function LogIn(props) {
+    return (
         <div>
-            <h1>LOG IN</h1>
-            <form onSubmit={props.submitForm}>
-                <input onChange={props.handleInputChange} type="name" placeholder="private name" />
-                <input type="text" placeholder="family name"/>
-                <input type="email" placeholder="email@email.com"/>
-                <input type="password" placeholder="*****"/>
-                <input type="password" placeholder="enter your password again"/>
+            <h1>Log In</h1>
+            <form onSubmit={props.submitFormLogIn}>
+                <input onChange={props.handleInputChangeLogIn} name='email' type="email" placeholder="email@email.com" />
+                <input onChange={props.handleInputChangeLogIn} name='password' type="password1" placeholder="*****" />
                 <button>Submit</button>
             </form>
         </div>

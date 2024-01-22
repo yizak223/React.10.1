@@ -1,4 +1,4 @@
-import '../pages/BudgetTracker/BudgetTracker.css'
+// import '../pages/BudgetTracker/BudgetTracker.css'
 
 function BudgetCard(props) {
     return (

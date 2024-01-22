@@ -5,23 +5,41 @@ import './App.css'
 // import BudgetCard from './components/BudgetCard'
 import BudgetTracker from './pages/BudgetTracker'
 import Home from './pages/Home'
-import Auth from './pages/Auth'
-import NavBar from './components/navBar'
+import Auth  from './pages/Auth'
+import NavBar from './components/NavBar/navBar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { dB, signUp } from "./config/fireBaseConfig"
+import { auth } from './config/fireBaseConfig'
+import { onAuthStateChanged, signOut  } from 'firebase/auth'
 // import './firebase'; // Add this line prevent firebase not loading error
 // import { getFirestore, addDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
 
 function App() {
   const [counter, setcounter] = useState(0)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [name, setName] = useState(null)
-
+  const [name, setName] = useState('null')
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+      console.log(user);
+        if (user) {
+          const uid = user.uid;
+          console.log(user.email.substring(0,user.email.indexOf('@')));
+          setName(user.email);
+          console.log(isLoggedIn);
+          setIsLoggedIn(true)
+        } else {
+          console.log(isLoggedIn);
+            setIsLoggedIn(false)
+        }
+      });
+}
+,[])
   return (
     <BrowserRouter>
       <NavBar counter={counter} setcounter={setcounter} />
       <Routes>
-        <Route path='/Home' element={<Home />} setcounter={setcounter} />
+        <Route path='/Home' element={<Home 
+        signOut={signOut} name={name} isLoggedIn={isLoggedIn} setcounter={setcounter} counter={counter}/>}  />
         <Route path='/BudgetTracker' element={
         <BudgetTracker 
         dB={dB}
@@ -29,10 +47,11 @@ function App() {
         counter={counter} setcounter={setcounter} 
         name={name}
         />} />
-        <Route path='/Auth' element={<Auth 
+        <Route path='/LogIn' element={<Auth 
         isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} 
         setName={setName} name={name} 
         signUp={signUp}
+        auth={auth}
         />} />
       </Routes>
     </BrowserRouter>

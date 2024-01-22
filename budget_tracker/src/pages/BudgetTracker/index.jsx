@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import BudgetCard from "../../components/BudgetCard";
+import BudgetCard from "../../components/BudgetTracker/BudgetCard";
 import '../BudgetTracker/BudgetTracker.css'
 import { Link } from 'react-router-dom'
 import { addDoc, collection, onSnapshot, doc, deleteDoc, query, getDocs, where, serverTimestamp, orderBy, updateDoc } from "firebase/firestore";
@@ -52,18 +52,24 @@ function BudgetTracker(props) {
         await deleteDoc(docRef)
     }
     const handleQueryDelete = async (removeName) => {
-
-        const collectionRef = collection(props.dB, "expanses");
+        if (removeName!='') {
+             const collectionRef = collection(props.dB, "expanses");
         const q = query(collectionRef, where("Title", "==", removeName));
         console.log(removeName);
         const snapshot = await getDocs(q);
-
         const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-
+        console.log(results);
         results.forEach(async (result) => {
+            if (result.Title==removeName) {
             const docRef = doc(props.dB, "expanses", result.id);
             await deleteDoc(docRef);
+            }
+            else{
+                alert('there is no budget like this')
+            }
         });
+        }
+       
     };
     //? delete with local storage
     const deleteBudgetTracker = (budgetTracker) => {
