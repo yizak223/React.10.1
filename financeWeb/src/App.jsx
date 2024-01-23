@@ -6,7 +6,7 @@ import { NavBar } from './components/NavBar'
 import Authntication from './pages/Authentication'
 import CurrencyList from './pages/CurrencyList'
 import Favourite from './pages/Favourite'
-import  NotFound from './components/notFoundPage'
+import NotFound from './components/notFoundPage'
 import { dB, auth } from '../src/config/fireBaseConfig'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 
@@ -24,10 +24,12 @@ function App() {
       } else {
         setIsLoggedIn(false)
         setName(null)
+        console.log(isLoggedIn);
+        console.log(name);
       }
     })
   }, [])
-
+  console.log(isLoggedIn);
 
   const fetchFinance = () => {
     fetch(`https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/rates_of_exchange?page[number]=1&page[size]=100`)
@@ -41,30 +43,35 @@ function App() {
       })
       .catch((err) => console.error(err));
   }
-  fetchFinance()
+  // fetchFinance()
 
 
 
   return (
     <>
       <BrowserRouter>
-        <NavBar  
-        setIsLoggedIn={setIsLoggedIn} 
-        counter={counter} setcounter={setcounter} 
+        <NavBar
+          setIsLoggedIn={setIsLoggedIn}
+          isLoggedIn={isLoggedIn}
+          counter={counter} setcounter={setcounter}
         />
         <Routes>
           <Route path="/Home" element={<Home
+            signOut={signOut}
+            setIsLoggedIn={setIsLoggedIn}
             name={name}
           />} />
           <Route path="/CurrencyList" element={<CurrencyList />} />
           <Route path="/Favourite" element={<Favourite />} />
-          {!setIsLoggedIn ?
-            <Route path="/Authntication" element={<Authntication
+          {isLoggedIn ?
+            <Route path="/Authntication" element={<NotFound />} />
+            : <Route path="/Authntication" element={<Authntication
               isLoggedIn={isLoggedIn}
               setIsLoggedIn={setIsLoggedIn}
               name={name} setName={setName}
             />} />
-            :  <Route path="/Authntication" element={<NotFound/>}/> }
+
+          }
         </Routes>
       </BrowserRouter>
 
