@@ -53,17 +53,18 @@ function App() {
             userId={userId} setuserId={setuserId}
           />} />
           <Route path="/CurrencyList/:CurrencyID" element={<BigCard />} />
-          <Route path="/Favourite" element={<Favourite
-            isLoggedIn={isLoggedIn}
-            name={name}
-            counter={counter} setcounter={setcounter} />} />
+          <Route path="/Favourite" element={<Favourite 
+           isLoggedIn={isLoggedIn}
+           name={name}
+           counter={counter} setcounter={setcounter}/>} />
           {isLoggedIn ?
             <Route path="/Authntication" element={<NotFound />} />
-            : <Route path="/Authntication" element={<Authntication />} />
+            : <Route path="/Authntication" element={<Authntication/>} />
 
           }
         </Routes>
       </BrowserRouter>
+
     </>
   )
 }

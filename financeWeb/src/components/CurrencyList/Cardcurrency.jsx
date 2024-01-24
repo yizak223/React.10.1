@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { collection, serverTimestamp, addDoc, getDocs, query, where, doc, deleteDoc } from 'firebase/firestore';
 import { dB } from '../../config/fireBaseConfig';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, Route, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../../config/fireBaseConfig';
+import BigCard from './BigCard';
 
 export default function Cardcurrency(props) {
   const [isSaved, setIsSaved] = useState(false);
+  const { CurrencyID } = useParams();
+  const navigate  = useNavigate();
+
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       props.setuserId(user.uid)
-      console.log(props.userId)
+      // console.log(props.userId)
     })
   }, [props.userId, isSaved])
   useEffect(() => {
     checkIfSaved(props.currencyData.country);
-  }, [props.isLoggedIn, props.currencyData.country]);
+  }, [props.isLoggedIn, props.currencyData.country, isSaved]);
 
   const checkIfSaved = async (removeName) => {
     if (props.isLoggedIn) {
@@ -25,15 +29,15 @@ export default function Cardcurrency(props) {
       const snapshot = await getDocs(q);
       const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
       // console.log(results[0].user_id);
-      console.log(props.userId);
+      // console.log(props.userId);
       // console.log(results[0].user_id == props.userId);
       try {
          if (results[0].user_id == props.userId) {
 
-        setIsSaved(results.length === 1);
+        setIsSaved(true);
       }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
      
     }
@@ -51,11 +55,13 @@ export default function Cardcurrency(props) {
       if (results.length > 0) {
         const confirmUser = window.confirm('This currency is already saved. Do you want to remove it?');
         if (confirmUser) {
+          console.log(1);
           const docRef = doc(dB, "favuoriteCurrency", results[0].id);
           await deleteDoc(docRef);
-          setIsSaved((prevIsSaved) => !prevIsSaved);
+          setIsSaved(false);
         }
       } else {
+        console.log(2);
         const payload = {
           country: currencyObject.country,
           currency: currencyObject.currency,
@@ -67,7 +73,8 @@ export default function Cardcurrency(props) {
   
         const docRef = await addDoc(collectionRef, payload);
         currencyObject.id = docRef.id;
-        setIsSaved((prevIsSaved) => !prevIsSaved);
+        console.log(3);
+        setIsSaved(true);
       }
   
       console.log("After state update - isSaved:", isSaved);
@@ -75,26 +82,29 @@ export default function Cardcurrency(props) {
       alert('Please login first');
     }
   };
-  const bigShow = (id) => {
-    <Link path=''></Link>
-  }
+  // const bigShow = () => {
+  //   navigate(`/CurrencyList/${props.currencyData.country}/details`);
+  // };
   return (
     <div className='card'>
-      <section className="LittleCard">
-        <section className="card-body">
-          <h1 className='fieldData'>{props.currencyData.country}</h1>
-          {/* className='fieldData'<img src={props.currencyData.countryImg} alt="" /> */}
-          <h2 className='fieldData'>{props.currencyData.currency}</h2>
-          <h3 className='fieldData'>{props.currencyData.date}</h3>
-          <h3 className='fieldData'>{props.currencyData.exchange_rate}</h3>
-          <button
-            onClick={() => addToFavourite(props.currencyData)}
-            className={`SaveForLaterBtn ${isSaved ? 'userLiked' : ''}`}
-          >
-            {isSaved ? 'Remove' : 'Save for later'}
-          </button>
-        </section>
+    <section className='LittleCard'>
+      <section className='card-body'>
+        <h1 className='fieldData'>{props.currencyData.country}</h1>
+        {/* className='fieldData'<img src={props.currencyData.countryImg} alt="" /> */}
+        <h2 className='fieldData'>{props.currencyData.currency}</h2>
+        <h3 className='fieldData'>{props.currencyData.date}</h3>
+        <h3 className='fieldData'>{props.currencyData.exchange_rate}</h3>
+        <Link to={`/CurrencyList/${props.currencyData.country}`}>see more</Link>
+        <button
+          onClick={() => {
+            addToFavourite(props.currencyData);
+          }}
+          className={`SaveForLaterBtn ${isSaved ? 'userLiked' : ''}`}
+        >
+          {isSaved ? 'Remove' : 'Save for later'}
+        </button>
       </section>
-    </div>
+    </section>
+  </div>
   )
 }
