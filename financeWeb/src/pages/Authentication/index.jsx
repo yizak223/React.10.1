@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Login from '../../components/Authentocation/logIn'
 import SignUp from '../../components/Authentocation/signUp'
 import { auth } from '../../config/fireBaseConfig'
@@ -25,7 +25,7 @@ export default function Authntication(props) {
     setFormDataLogIn({ ...formDataLogIn })
   }
 
-  const submitFormSignUp = async (e) => {
+  const submitFormSignUp =  (e) => {
     e.preventDefault()
     console.log(formDataSignUp)
     setFormDatasSignUp([...formDatasSignUp, { ...formDataSignUp }])
@@ -35,7 +35,6 @@ export default function Authntication(props) {
         const user = userCredential.user;
         console.log(user);
         navigate('/CurrencyList'); // Change '/dashboard' to the desired URL
-
       })
       .catch((error) => {
         alert('this email is already registered')
@@ -44,7 +43,7 @@ export default function Authntication(props) {
         const errorMessage = error.message;
       });
   }
-  const submitFormLogIn = async (e) => {
+  const submitFormLogIn =  (e) => {
     e.preventDefault()
     console.log(formDataLogIn)
     setFormDatasLogIn([...formDatasLogIn, {...formDataLogIn}])

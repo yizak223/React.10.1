@@ -11,8 +11,7 @@ export default function Cardcurrency(props) {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       props.setuserId(user.uid)
-      console.log(props.userId)
-      
+      console.log(props.userId) 
     })
   }, [props.userId, isSaved])
   useEffect(() => {

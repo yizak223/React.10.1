@@ -1,7 +1,7 @@
 import React from 'react'
 import FavouriteCard from '../../components/Favourite';
-import { collection, query, onSnapshot, orderBy, where, getDoc, getDocs } from 'firebase/firestore';
-import { dB, auth } from '../../config/fireBaseConfig';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { dB } from '../../config/fireBaseConfig';
 import { onAuthStateChanged, signOut, getAuth } from 'firebase/auth'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
