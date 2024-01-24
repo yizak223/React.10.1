@@ -1,8 +1,23 @@
 div{
-    max-width: 400px;
     margin: 0 auto;
-    padding: 20px;
+    /* padding: 20px; */
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.card{
+    width: 20vw;
+    background-color: #a19b9b;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+.listCard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.fieldData{
+    padding: 5px;
 }

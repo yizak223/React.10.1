@@ -7,69 +7,62 @@ import Authntication from './pages/Authentication'
 import CurrencyList from './pages/CurrencyList'
 import Favourite from './pages/Favourite'
 import NotFound from './components/notFoundPage'
-import { dB, auth } from '../src/config/fireBaseConfig'
-import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { auth } from '../src/config/fireBaseConfig'
+import { onAuthStateChanged } from 'firebase/auth'
+import BigCard from './components/CurrencyList/BigCard'
 
 function App() {
   const [counter, setcounter] = useState(0)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [name, setName] = useState(null)
+  const [userId, setuserId] = useState('')
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
+      console.log(user.uid);
+      setuserId(user.uid)
       if (user) {
         setIsLoggedIn(true)
         setName(user.email.substring(0, user.email.indexOf('@')))
-        console.log(name);
+        // console.log(name);
       } else {
         setIsLoggedIn(false)
         setName(null)
-        console.log(isLoggedIn);
+        // console.log(isLoggedIn);
         console.log(name);
       }
     })
-  }, [])
-  console.log(isLoggedIn);
-
-  const fetchFinance = () => {
-    fetch(`https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/rates_of_exchange?page[number]=1&page[size]=100`)
-      .then(res => res.json())
-      .then((data) => {
-        console.log(data);
-        fetch(`https://restcountries.com/v3.1/name/${data.data[80].country}`)
-          .then(res => { return res.json() })
-          .then(data => { console.log(data) })
-          .catch(err => console.error(err))
-      })
-      .catch((err) => console.error(err));
-  }
-  // fetchFinance()
-
-
+  }, [isLoggedIn])
+  // console.log(isLoggedIn);
 
   return (
     <>
       <BrowserRouter>
         <NavBar
-          setIsLoggedIn={setIsLoggedIn}
           isLoggedIn={isLoggedIn}
           counter={counter} setcounter={setcounter}
         />
         <Routes>
           <Route path="/Home" element={<Home
-            signOut={signOut}
+            isLoggedIn={isLoggedIn}
             setIsLoggedIn={setIsLoggedIn}
             name={name}
+            counter={counter} setcounter={setcounter}
           />} />
-          <Route path="/CurrencyList" element={<CurrencyList />} />
-          <Route path="/Favourite" element={<Favourite />} />
+          <Route path="/CurrencyList" element={<CurrencyList
+            name={name}
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+            userId={userId} setuserId={setuserId}
+          />} />
+          <Route path="/CurrencyList/:CurrencyID" element={<BigCard />} />
+          <Route path="/Favourite" element={<Favourite 
+           isLoggedIn={isLoggedIn}
+           name={name}
+           counter={counter} setcounter={setcounter}/>} />
           {isLoggedIn ?
             <Route path="/Authntication" element={<NotFound />} />
-            : <Route path="/Authntication" element={<Authntication
-              isLoggedIn={isLoggedIn}
-              setIsLoggedIn={setIsLoggedIn}
-              name={name} setName={setName}
-            />} />
+            : <Route path="/Authntication" element={<Authntication/>} />
 
           }
         </Routes>

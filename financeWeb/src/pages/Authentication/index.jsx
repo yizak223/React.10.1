@@ -4,12 +4,17 @@ import Login from '../../components/Authentocation/logIn'
 import SignUp from '../../components/Authentocation/signUp'
 import { auth } from '../../config/fireBaseConfig'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword  } from 'firebase/auth'
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Authntication(props) {
+  const navigate  = useNavigate();
+
   const [formDatasSignUp, setFormDatasSignUp] = useState([])
   const [formDatasLogIn, setFormDatasLogIn] = useState([])
   const [formDataSignUp, setFormDataSignUp] = useState({})
   const [formDataLogIn, setFormDataLogIn] = useState({})
+  const [logOrSign, setlogOrSign] = useState(false)
 
   const handleInputChangeSignUp = (e) => {
     formDataSignUp[e.target.name] = e.target.value
@@ -29,6 +34,8 @@ export default function Authntication(props) {
         alert('you have successfully signed up')
         const user = userCredential.user;
         console.log(user);
+        navigate('/CurrencyList'); // Change '/dashboard' to the desired URL
+
       })
       .catch((error) => {
         alert('this email is already registered')
@@ -47,6 +54,7 @@ export default function Authntication(props) {
       // Signed in 
       const user = userCredential.user;
       console.log(user);
+      navigate ('/CurrencyList'); // Change '/dashboard' to the desired URL
     })
     .catch((error) => {
         alert('this email is not registered')
@@ -57,30 +65,17 @@ export default function Authntication(props) {
       console.log(errorMessage);
     });
 }
-  useEffect(() => {
-    console.log(formDataLogIn);
-  }, [formDataLogIn])
-  useEffect(() => {
-    console.log(formDataSignUp);
-  }, [formDataSignUp])
-  useEffect(() => {
-    console.log(formDatasSignUp)
-  }, [formDatasSignUp])
-  useEffect(() => {
-    console.log(formDatasLogIn);
-  }, [formDatasLogIn])
-
   return (
     <div>
       {
-        props.isLoggedIn ?
+        logOrSign ?
           <div className="LogIn">
             <SignUp
             submitFormSignUp={submitFormSignUp}
               handleInputChangeSignUp={handleInputChangeSignUp}
             />
             <p>Have an acconout?</p>
-            <p className="lgin-signup" onClick={() => props.setIsLoggedIn(!props.isLoggedIn)}>Log in</p>
+            <p className="lgin-signup" onClick={() => setlogOrSign(!logOrSign)}>Log in</p>
           </div>
           : <div className="SignUp">
             <Login
@@ -88,7 +83,7 @@ export default function Authntication(props) {
               handleInputChangeLogIn={handleInputChangeLogIn}
             />
             <p>Don't have acconout? </p>
-            <p className="lgin-signup" onClick={() => props.setIsLoggedIn(!props.isLoggedIn)}>Sign up</p>
+            <p className="lgin-signup" onClick={() => setlogOrSign(!logOrSign)}>Sign up</p>
           </div>
       }
     </div>
