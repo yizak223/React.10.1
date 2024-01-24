@@ -11,7 +11,7 @@ export default function Cardcurrency(props) {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       props.setuserId(user.uid)
-      console.log(props.userId) 
+      console.log(props.userId)
     })
   }, [props.userId, isSaved])
   useEffect(() => {
@@ -24,46 +24,57 @@ export default function Cardcurrency(props) {
       const q = query(collectionRef, where("country", "==", removeName));
       const snapshot = await getDocs(q);
       const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-      setIsSaved(results.length === 1);
+      // console.log(results[0].user_id);
+      console.log(props.userId);
+      // console.log(results[0].user_id == props.userId);
+      try {
+         if (results[0].user_id == props.userId) {
+
+        setIsSaved(results.length === 1);
+      }
+      } catch (error) {
+        console.log(error);
+      }
+     
     }
   };
 
-  const addToFavourite = async (removeName) => {
+  const addToFavourite = async (currencyObject) => {
     if (props.isLoggedIn) {
-      const collectionRef = collection(dB, 'favuoriteCurrency')
-      const q = query(collectionRef, where("country", "==", removeName));
+      const collectionRef = collection(dB, 'favuoriteCurrency');
+      const q = query(collectionRef, where("country", "==", currencyObject.country), where("user_id", "==", props.userId));
       const snapshot = await getDocs(q);
-      const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-      if (results.length == 1) {
-        const confrimUser = window.confirm('this currency is already saved you want to remove it?')
-        if (confrimUser) {
-          if (results[0].country == removeName) {
-            const docRef = doc(dB, "favuoriteCurrency", results[0].id);
-            await deleteDoc(docRef);
-            setIsSaved(false);
-          }
+      const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+  
+      console.log("Before state update - isSaved:", isSaved);
+  
+      if (results.length > 0) {
+        const confirmUser = window.confirm('This currency is already saved. Do you want to remove it?');
+        if (confirmUser) {
+          const docRef = doc(dB, "favuoriteCurrency", results[0].id);
+          await deleteDoc(docRef);
+          setIsSaved((prevIsSaved) => !prevIsSaved);
         }
-      }
-      else {
-        console.log(props.userId);
+      } else {
         const payload = {
-          country: props.currencyData.country,
-          currency: props.currencyData.currency,
-          exchange_rate: props.currencyData.exchange_rate,
-          record_date: props.currencyData.date,
+          country: currencyObject.country,
+          currency: currencyObject.currency,
+          exchange_rate: currencyObject.exchange_rate,
+          record_date: currencyObject.date,
           timestamp: serverTimestamp(),
           user_id: props.userId
-        }
-        console.log(payload);
-        const docRef = await addDoc(collectionRef, payload)
-        console.log(docRef.id);
-        props.currencyData.id = docRef.id
-        setIsSaved(true);
+        };
+  
+        const docRef = await addDoc(collectionRef, payload);
+        currencyObject.id = docRef.id;
+        setIsSaved((prevIsSaved) => !prevIsSaved);
       }
+  
+      console.log("After state update - isSaved:", isSaved);
     } else {
-      alert('Please login first')
+      alert('Please login first');
     }
-  }
+  };
   const bigShow = (id) => {
     <Link path=''></Link>
   }
@@ -77,7 +88,7 @@ export default function Cardcurrency(props) {
           <h3 className='fieldData'>{props.currencyData.date}</h3>
           <h3 className='fieldData'>{props.currencyData.exchange_rate}</h3>
           <button
-            onClick={() => addToFavourite(props.currencyData.country)}
+            onClick={() => addToFavourite(props.currencyData)}
             className={`SaveForLaterBtn ${isSaved ? 'userLiked' : ''}`}
           >
             {isSaved ? 'Remove' : 'Save for later'}
