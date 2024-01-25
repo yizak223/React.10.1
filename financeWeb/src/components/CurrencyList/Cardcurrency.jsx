@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { collection, serverTimestamp, addDoc, getDocs, query, where, doc, deleteDoc } from 'firebase/firestore';
 import { dB } from '../../config/fireBaseConfig';
-import { Link, useParams, Route, useNavigate } from 'react-router-dom';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { Link } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../config/fireBaseConfig';
-import BigCard from './BigCard';
 
 export default function Cardcurrency(props) {
-  const [isSaved, setIsSaved] = useState(false);
-  const { CurrencyID } = useParams();
-  const navigate  = useNavigate();
-
+  const [isSaved, setIsSaved] = useState(false)
 
   useEffect(() => {
+    try{
     onAuthStateChanged(auth, (user) => {
       props.setuserId(user.uid)
       // console.log(props.userId)
-    })
+    })}
+    catch(err){
+      console.log(err);
+    }
   }, [props.userId, isSaved])
   useEffect(() => {
     checkIfSaved(props.currencyData.country);
@@ -33,7 +33,6 @@ export default function Cardcurrency(props) {
       // console.log(results[0].user_id == props.userId);
       try {
          if (results[0].user_id == props.userId) {
-
         setIsSaved(true);
       }
       } catch (error) {
@@ -82,9 +81,7 @@ export default function Cardcurrency(props) {
       alert('Please login first');
     }
   };
-  // const bigShow = () => {
-  //   navigate(`/CurrencyList/${props.currencyData.country}/details`);
-  // };
+
   return (
     <div className='card'>
     <section className='LittleCard'>

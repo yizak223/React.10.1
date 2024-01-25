@@ -19,7 +19,8 @@ function App() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      console.log(user.uid);
+      // console.log(user.uid);
+      try{
       setuserId(user.uid)
       if (user) {
         setIsLoggedIn(true)
@@ -28,6 +29,9 @@ function App() {
         setIsLoggedIn(false)
         setName(null)
         console.log(name);
+      }}
+      catch(err){
+        console.log(err);
       }
     })
   }, [isLoggedIn])
@@ -54,6 +58,7 @@ function App() {
           />} />
           <Route path="/CurrencyList/:CurrencyID" element={<BigCard />} />
           <Route path="/Favourite" element={<Favourite 
+          setIsLoggedIn={setIsLoggedIn}
            isLoggedIn={isLoggedIn}
            name={name}
            counter={counter} setcounter={setcounter}/>} />

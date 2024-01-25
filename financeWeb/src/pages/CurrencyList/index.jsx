@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
-import BigCard from '../../components/CurrencyList/BigCard';
 import Cardcurrency from '../../components/CurrencyList/Cardcurrency';
-import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { getAuth, signOut } from 'firebase/auth'
 
 function Currency(props) {
@@ -12,6 +11,7 @@ function Currency(props) {
     fetch(`https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/rates_of_exchange?sort=-record_date`)
       .then(res => res.json())
       .then((currency) => {
+        console.log(currency);
         const dataArray = currency.data.map((element) => ({
           country: element.country,
           currency: element.currency,
@@ -71,8 +71,6 @@ function Currency(props) {
         <h1>Wellcome {props.name ? props.name : null} to our finance web</h1>
       </div>
       <div className='listCard'>
-
-        {/* <BigCard/> */}
         {currencyDataArray.map((currencyData, index) => {
           return (
             <Cardcurrency userId={props.userId} setuserId={props.setuserId}

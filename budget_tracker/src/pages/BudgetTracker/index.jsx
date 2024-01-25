@@ -66,11 +66,8 @@ function BudgetTracker(props) {
             }
             else{
                 alert('there is no budget like this')
-            }
-        });
-        }
-       
-    };
+            }})}}
+            
     //? delete with local storage
     const deleteBudgetTracker = (budgetTracker) => {
         const filtered = budgetTrackers.filter((item) => {
