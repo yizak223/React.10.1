@@ -16,21 +16,24 @@ export default function Authentication() {
     const handleInputChangeRegister = (e) => {
         formDataSignUp[e.target.name] = e.target.value
         setFormDataSignUp({ ...formDataSignUp })
+        console.log(formDataSignUp);
     }
     const handleInputChangeLogIn = (e) => {
         formDataLogIn[e.target.name] = e.target.value
         setFormDataLogIn({ ...formDataLogIn })
+        console.log(formDataLogIn);
     }
     const submitFormRegister = (e) => {
         e.preventDefault()
         console.log(formDataSignUp)
         setFormDatasSignUp([...formDatasSignUp, { ...formDataSignUp }])
-        register()
+        register(formDataSignUp.email, formDataSignUp.password1)
     }
     const submitFormLogIn = (e) => {
         e.preventDefault()
         console.log(formDataLogIn)
         setFormDatasLogIn([...formDatasLogIn, { ...formDataLogIn }])
+        login(formDataLogIn.email, formDataLogIn.password)
     }
     return (
         <div>
