@@ -1,5 +1,5 @@
 {
-  "name": "financeweb",
+  "name": "made-me-resume",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,13 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/free-brands-svg-icons": "^6.5.1",
-    "@fortawesome/free-regular-svg-icons": "^6.5.1",
-    "@fortawesome/free-solid-svg-icons": "^6.5.1",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "dotenv": "^16.3.2",
-    "firebase": "^10.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.3"

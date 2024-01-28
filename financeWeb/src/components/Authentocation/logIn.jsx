@@ -4,7 +4,7 @@ import '../Authentocation/Auth.css'
 
 export default function logIn(props) {
     return (
-        <div>
+        <div className='logInDiv'>
             <h1>Log In</h1>
             <form onSubmit={props.submitFormLogIn}>
                 <input onChange={props.handleInputChangeLogIn} name='email' type="email" placeholder="email@email.com" />

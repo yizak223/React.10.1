@@ -2,8 +2,13 @@ import { Testemonies } from "../../components/Home/Testemonies";
 import { About } from "../../components/Home/About";
 import { getAuth, signOut } from 'firebase/auth'
 import { Link } from 'react-router-dom'
+import React,{useContext} from "react";
+import ThemeProvider from "../../context/Theme";
+import {ThemeContext} from "../../context/Theme";
 
 export function Home(props) {
+    const { isDarkMode,toggleTheme, selectedTheme } = useContext(ThemeContext);
+    console.log({isDarkMode});
     console.log(props.isLoggedIn);
     const auth = getAuth()
     const mysignOut = () => {
@@ -18,12 +23,8 @@ export function Home(props) {
     }
 
     return (
-        <div>{props.isLoggedIn ?
-            <button onClick={mysignOut}>Log-out</button> :
-            <Link
-                onClick={() => props.setcounter(2)}
-                className={props.counter === 2 ? 'nav-link active' : 'nav-link'}
-                to='/Authntication'><button>LogIn</button></Link>}
+        <div style={{...selectedTheme}}>
+            <button onClick={toggleTheme}>Change dark/light mode</button>
             <h1>Wellcome {props.name ? props.name : null} to our finance web</h1>
             <About />
             <Testemonies />

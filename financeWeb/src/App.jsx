@@ -10,6 +10,7 @@ import NotFound from './components/notFoundPage'
 import { auth } from '../src/config/fireBaseConfig'
 import { onAuthStateChanged } from 'firebase/auth'
 import BigCard from './components/CurrencyList/BigCard'
+import ThemeProvider from './context/Theme'
 
 function App() {
   const [counter, setcounter] = useState(0)
@@ -42,14 +43,17 @@ function App() {
         <NavBar
           isLoggedIn={isLoggedIn}
           counter={counter} setcounter={setcounter}
+          setIsLoggedIn={setIsLoggedIn}
+            name={name}
         />
         <Routes>
-          <Route path="/Home" element={<Home
+       
+          <Route path="/" element={ <ThemeProvider><Home
             isLoggedIn={isLoggedIn}
             setIsLoggedIn={setIsLoggedIn}
             name={name}
             counter={counter} setcounter={setcounter}
-          />} />
+          /></ThemeProvider>} />
           <Route path="/CurrencyList" element={<CurrencyList
             name={name}
             isLoggedIn={isLoggedIn}

@@ -5,6 +5,7 @@ import SignUp from '../../components/Authentocation/signUp'
 import { auth } from '../../config/fireBaseConfig'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword  } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom';
+import '../Authentication/Auth.css'
 
 
 export default function Authntication(props) {
