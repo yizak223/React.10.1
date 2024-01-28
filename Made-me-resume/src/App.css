@@ -40,3 +40,20 @@
 .read-the-docs {
   color: #888;
 } */
+
+.navBar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-link{
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+}
+.active{
+  color: #360be2;
+  font-weight: 600;
+}

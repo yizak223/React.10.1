@@ -1,15 +1,21 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 export default function NavBar() {
-    const [counter, setcounter] = useState(0)
+    const location = useLocation();
+    const [path, setPath] = useState();
+
+    useEffect(() => {
+        setPath(location.pathname);
+    }
+    ,[])
+
     return (
         <header>
             <nav className="navBar">
-                <Link onClick={()=>{setcounter(0)}} className={counter===0?'nav-link active' : 'nav-link'} to='/'>Home</Link>
-                <Link onClick={()=>{setcounter(1)}} className={counter===1?'nav-link active' : 'nav-link'} to='/MadeMeResume'>Made-me-resume</Link>
-                <Link onClick={()=>{setcounter(2)}} className={counter===2?'nav-link active' : 'nav-link'} to=''></Link>
-                <Link onClick={()=>{setcounter(3)}} className={counter===3?'nav-link active' : 'nav-link'} to=''></Link>
+                <Link onClick={()=>{setPath('/')}} className={path === '/' ? 'nav-link active' : 'nav-link'} to='/'>Home</Link>
+                <Link onClick={()=>{setPath('/MadeMeResume')}} className={path === '/MadeMeResume' ? 'nav-link active' : 'nav-link'} to='/MadeMeResume'>Made-me-resume</Link>
+                <Link onClick={()=>{setPath('/Authentication')}} className={path === '/Authentication' ? 'nav-link active' : 'nav-link'} to='/Authentication'>Log-in</Link>
             </nav>
         </header>
     )

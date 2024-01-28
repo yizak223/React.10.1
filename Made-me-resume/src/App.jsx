@@ -6,6 +6,7 @@ import NavBar from './component/navBar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/home'
 import MadeMeResume from './pages/madeResume'
+import Authentication from './pages/authentication'
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/MadeMeResume" element={<MadeMeResume />} />
-          {/* <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/Authentication" element={<Authentication />} />
         </Routes>
       </BrowserRouter>
     </>

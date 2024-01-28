@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {getFirestore} from "firebase/firestore"
-import {getAuth , createUserWithEmailAndPassword} from 'firebase/auth'
+import { getFirestore } from "firebase/firestore"
+import { getAuth } from 'firebase/auth'
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -9,13 +9,13 @@ import {getAuth , createUserWithEmailAndPassword} from 'firebase/auth'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCt3e-uv3BsMfWLmeq6DTkMqiugOr4EQ5s",
-  authDomain: "finance-web-299e2.firebaseapp.com",
-  projectId: "finance-web-299e2",
-  storageBucket: "finance-web-299e2.appspot.com",
-  messagingSenderId: "430774331957",
-  appId: "1:430774331957:web:34b93b2f58e6bc7fcbdf7c",
-  measurementId: "G-C7T0VW15PK"
+    apiKey: "AIzaSyAZqn3OuX3IcYVCqbCOU_0F6CULFPMB09E",
+    authDomain: "made-me-resume.firebaseapp.com",
+    projectId: "made-me-resume",
+    storageBucket: "made-me-resume.appspot.com",
+    messagingSenderId: "577081178777",
+    appId: "1:577081178777:web:a28b1d888f10d640009608",
+    measurementId: "G-3YWF72LQN0"
 };
 
 // Initialize Firebase
