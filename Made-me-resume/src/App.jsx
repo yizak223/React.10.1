@@ -18,8 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/MadeMeResume" element={<MadeMeResume />} />
-          <Route path='UserResume' element={<UserResume/> } />
-          <Route path='UserResume/:ResumeId' element={<BigResume/> } />
+          <Route path='/UserResume' element={<UserResume/> } />
+          <Route path='/UserResume/:ResumeId' element={<BigResume/> } />
           {!user ? <Route path="/Authentication" element={
             <Authentication />} /> : null}
         </Routes>

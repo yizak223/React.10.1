@@ -88,14 +88,16 @@ body {
 }
 
 .UserHello {
-  background-color: #44b1b4;
+  color: #44b1b4;
+  font-weight: 600;
   padding: 5px;
   border-radius: 8px;
   cursor: pointer;
 }
 
 .UserHello:hover {
-  background-color: #818484;
+  background-color: #44b1b4;
+  color: #000;
   transition: 1s;
 }
 

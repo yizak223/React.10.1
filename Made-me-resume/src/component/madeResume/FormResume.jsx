@@ -1,69 +1,72 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
+import Education from './Education';
+import WorkExperince from './WorkExperince';
+import PrivateDetails from './PrivateDetails';
+import MessageSent from './MessageSent';
 
 export default function FormResume() {
   const [selectedOption, setSelectedOption] = useState(null);
+  const [formData,setFormData]=useState({})
+  const [counter,setCounter] = useState(0)
+  const [counter2,setCounter2] = useState(0)
 
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
+  const handleInputChange = (e) => {
+    formData[e.target.name] = e.target.value
+    setFormData({ ...formData })
+    console.log(formData);
+  }
+
+  const handleOptionChange = (e) => {
+    setSelectedOption(e.target.value);
+    formData[e.target.name] = e.target.value
+    setFormData({ ...formData })
+    console.log(formData);
   };
+  const renderCurrentStep = () => {
+    switch (counter) {
+      case 0:
+        return <PrivateDetails handleInputChange={handleInputChange} />;
+      case 1:
+        return (
+          <WorkExperince
+            selectedOption={selectedOption}
+            handleInputChange={handleInputChange}
+            handleOptionChange={handleOptionChange}
+          />
+        );
+      case 2:
+        return <Education handleInputChange={handleInputChange} />;
+      case 3:
+        return <MessageSent />;
+      default:
+        return null;
+    }
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add logic to handle form submission
+    console.log("Form submitted:", formData);
+    // You can add further logic to send the form data to a server, etc.
+  };
+  const goToMessage = ()=>{
+    setCounter(counter+1)
+    setCounter2(counter2+1)
+  }
   return (
     <div className="form-container">
-    <form>
-      <label htmlFor="FullName">Full Name:</label><br />
-      <input name='FullName' type="text" className="form-input" /><br />
-      <label htmlFor="Email">Email:</label><br />
-      <input name='Email' type="text" className="form-input" /><br />
-      <label htmlFor="Phone">Phone: </label><br />
-      <input name='Phone' type="text" className="form-input" /><br />
-      <label htmlFor="AboutMe">About me: </label><br />
-      <textarea name="AboutMe" cols="30" rows="10" className="form-textarea"></textarea><br />
-      <label htmlFor="workExperience">Do you have work experience?</label><br />
-      <div className="radio-options">
-        <label htmlFor="yesWorkExperience" className="radio-label">
-          <input
-            type="radio"
-            name="option"
-            value="yesWorkExperience"
-            checked={selectedOption === 'yesWorkExperience'}
-            onChange={handleOptionChange}
-          />
-          Yes
-        </label>
-        <label htmlFor="noWorkExperience" className="radio-label">
-          <input
-            type="radio"
-            name="option"
-            value="noWorkExperience"
-            checked={selectedOption === 'noWorkExperience'}
-            onChange={handleOptionChange}
-          />
-          No
-        </label>
-      </div><br />
-      {selectedOption === 'yesWorkExperience' ?
-        <div className="work-experience-form">
-          <form>
-            <label htmlFor="CompanyName">Company name</label><br />
-            <input type="text" name='CompanyName' className="form-input" /><br />
-            <label htmlFor="Role">Role</label><br />
-            <input type="text" name='Role' className="form-input" /><br />
-            <label htmlFor="FrameTime"> Frame time</label><br />
-            <input type="text" name='FrameTime' className="form-input" /><br />
-            <button className="form-btn">Add</button>
-          </form>
-        </div>
-        : null
-      }
-      <label htmlFor="Education">Education</label><br />
-      <select name="Education" id="" className="form-select">
-        <option value="Select an option" disabled selected>Select an option</option>
-        <option value="12schoolyears">12 school years</option>
-        <option value="Ahighschooldiploma">A high school diploma</option>
-        <option value="BA">BA</option>
-        <option value="Professionalcertificate">Professional certificate</option>
-      </select><br />
-      <button className='form-btn'>Make resume</button>
+    <form onSubmit={handleSubmit}>
+      {renderCurrentStep()}
+      {counter < 2 ? (
+        <button className="form-btn" onClick={() => setCounter(counter + 1)}>
+          Next
+        </button>
+      ) : (
+        counter2 ==0?
+        <button onClick={goToMessage} type="submit" className="form-btn">
+          Make resume
+        </button>:null
+      )}
     </form>
   </div>
   )
