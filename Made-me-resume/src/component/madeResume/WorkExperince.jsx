@@ -1,13 +1,13 @@
 import React from 'react'
 
 export default function WorkExperince(props) {
-  
+
   return (
-    <form>
-        <label htmlFor="workExperience">Do you have work experience?</label><br />
+    <div>
+      <label htmlFor="workExperience">Do you have work experience?</label><br />
       <div className="radio-options">
         <label htmlFor="yesWorkExperience" className="radio-label">
-          <input 
+          <input
             type="radio"
             name="WorkExperience"
             value="yesWorkExperience"
@@ -29,17 +29,17 @@ export default function WorkExperince(props) {
       </div><br />
       {/* //!work experience details */}
       {props.selectedOption === 'yesWorkExperience' ?
-        <div className="work-experience-form">         
-            <label htmlFor="CompanyName">Company name</label><br />
-            <input onChange={props.handleInputChange} type="text" name='CompanyName' className="form-input" /><br />
-            <label htmlFor="Role">Role</label><br />
-            <input onChange={props.handleInputChange} type="text" name='Role' className="form-input" /><br />
-            <label htmlFor="FrameTime"> Frame time</label><br />
-            <input onChange={props.handleInputChange} type="text" name='FrameTime' className="form-input" /><br />
-            <button className="form-btn">Add</button>
+        <div className="work-experience-form">
+          <label htmlFor="CompanyName">Company name</label><br />
+          <input onChange={props.handleInputChange} type="text" name='CompanyName' className="form-input" /><br />
+          <label htmlFor="Role">Role</label><br />
+          <input onChange={props.handleInputChange} type="text" name='Role' className="form-input" /><br />
+          <label htmlFor="FrameTime"> Frame time</label><br />
+          <input onChange={props.handleInputChange} type="text" name='FrameTime' className="form-input" /><br />
+          <button className="form-btn add">Add</button>
         </div>
         : null
       }
-    </form>
+    </div>
   )
 }

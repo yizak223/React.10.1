@@ -36,7 +36,11 @@ export default function FormResume() {
           />
         );
       case 2:
-        return <Education handleInputChange={handleInputChange} />;
+        return <Education 
+        formData={formData}
+        setFormData={setFormData}
+        handleInputChange={handleInputChange}
+        />;
       case 3:
         return <MessageSent />;
       default:
@@ -57,13 +61,17 @@ export default function FormResume() {
     <div className="form-container">
     <form onSubmit={handleSubmit}>
       {renderCurrentStep()}
+      {0<counter && counter<3?
+      <button className="form-btn" onClick={() => setCounter(counter - 1)}>Previos</button>
+      : null
+      }
       {counter < 2 ? (
         <button className="form-btn" onClick={() => setCounter(counter + 1)}>
           Next
         </button>
       ) : (
         counter2 ==0?
-        <button onClick={goToMessage} type="submit" className="form-btn">
+        <button onClick={goToMessage} type="submit" className="form-btn submitBtn">
           Make resume
         </button>:null
       )}

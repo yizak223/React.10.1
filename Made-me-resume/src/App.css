@@ -121,7 +121,7 @@ body {
 }
 
 .logoutBtn:hover {
-  background-color: #696d69;
+  background-color: #43d790;
 }
 
 .form-container {
@@ -140,8 +140,6 @@ body {
 .work-experience-form {
   margin-top: 10px;
 }
-
-/* YourFormStyle.css */
 
 .form-container {
   max-width: 400px;
@@ -164,7 +162,34 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
+.goSeeItLink{
+  text-decoration: none;
+}
+.goSeeItBtn {
+  width: max-content;
+  background-color: #af4c9d;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transform: scale(1) translateY(0);
+  animation: growAndMove 0.5s infinite alternate; /* Adjust the duration and other values as needed */
+}
+.btnContainer{
+  margin-top: 5px;
+  display: flex;
+  /* justify-content: space-between; */
+}
+@keyframes growAndMove {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: scale(1.1) translateY(-5px);
+  }
+}
 .form-btn {
   background-color: #44b1b4;
   color: white;
@@ -172,6 +197,7 @@ body {
   border: none;
   border-radius: 4px;
   cursor: pointer; 
+  margin-left: 5px;
   transition: 1s;
 }
 
@@ -179,7 +205,12 @@ body {
   background-color: #16696c;
  
 }
-
+.submitBtn{
+  background-color: #258015;
+}
+.submitBtn:hover{
+  background-color: #6db860;
+}
 .radio-options {
   display: flex;
   gap: 10px;
@@ -192,4 +223,7 @@ body {
 
 .work-experience-form {
   margin-top: 10px;
+}
+.add{
+  margin-bottom: 5px;
 }
