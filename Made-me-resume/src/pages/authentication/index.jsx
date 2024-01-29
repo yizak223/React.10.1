@@ -3,10 +3,11 @@ import SignUp from "../../component/authentication/signUp";
 import React,{useContext} from 'react'
 import { useState } from "react";
 import {UserContext} from '../../context/User'
-
+import { useNavigate } from "react-router-dom";
 
 export default function Authentication() {
-    const { user, register, login, logout}=useContext(UserContext)
+    const navigate = useNavigate();
+    const { register, login}=useContext(UserContext)
     const [formDatasSignUp, setFormDatasSignUp] = useState([])
     const [formDatasLogIn, setFormDatasLogIn] = useState([])
     const [formDataSignUp, setFormDataSignUp] = useState({})
@@ -28,12 +29,14 @@ export default function Authentication() {
         console.log(formDataSignUp)
         setFormDatasSignUp([...formDatasSignUp, { ...formDataSignUp }])
         register(formDataSignUp.email, formDataSignUp.password1)
+        navigate('/'); 
     }
     const submitFormLogIn = (e) => {
         e.preventDefault()
         console.log(formDataLogIn)
         setFormDatasLogIn([...formDatasLogIn, { ...formDataLogIn }])
         login(formDataLogIn.email, formDataLogIn.password)
+        navigate('/'); 
     }
     return (
         <div>

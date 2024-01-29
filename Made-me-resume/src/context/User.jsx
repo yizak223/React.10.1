@@ -1,16 +1,33 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { auth } from "../config/firebaseConfig";
-import { signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 export const UserContext = createContext({})
 
 //* login להתחבר 
 //* register/ sign up להירשם
 
 export default function UserProvider({ children }) {
-    const navigate = useNavigate();
     const [user, setUser] = useState(null);
-    
+    const [userName, setUserName] = useState(null);
+    const [isLoggedIn,setIsLoggedIn]=useState(false)
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            try {
+                if (user) {
+                    setIsLoggedIn(true)
+                    setUserName(user.email.substring(0, user.email.indexOf('@')))
+                } else {
+                    setIsLoggedIn(false)
+                    setUserName(null)
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+        })
+    }, [isLoggedIn])
+
     const register = (email, password) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -18,7 +35,6 @@ export default function UserProvider({ children }) {
                 setUser(userCredential)
                 const user = userCredential.user;
                 console.log(user);
-                navigate('/'); 
             })
             .catch((error) => {
                 alert('this email is already registered')
@@ -35,7 +51,6 @@ export default function UserProvider({ children }) {
                 // Signed in 
                 const user = userCredential.user;
                 console.log(user);
-                navigate('/'); 
             })
             .catch((error) => {
                 alert('this email is not registered')
@@ -51,14 +66,14 @@ export default function UserProvider({ children }) {
             .then(() => {
                 alert('Your account has been signed out')
                 setUser(null);
-                navigate('/'); 
+                setUserName(null);
             })
             .catch((error) => {
                 console.log(error);
             });
     }
 
-    const shared = { user, register, login, logout }
+    const shared = { user, register, login, logout, userName, setUserName }
     return (
         <UserContext.Provider value={shared}>
             {children}

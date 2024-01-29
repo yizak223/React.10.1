@@ -40,20 +40,154 @@
 .read-the-docs {
   color: #888;
 } */
+* {
+  margin: 0;
+}
 
-.navBar{
+body {
+  background-color: #d2e2e3;
+  height: 100vh;
+  margin: 0;
+}
+
+
+.navBar {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
+  border-bottom: solid #827f7f;
+  background-color: #fff;
 }
-.nav-link{
+
+.nav-link {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 500;
   color: #000;
   text-decoration: none;
+  padding: 10px;
+
 }
-.active{
-  color: #360be2;
+
+.nav-link:hover {
+  background-color: #44b1b4;
+  transition: 1s;
+}
+
+.active {
+  color: #000000;
+  background-color: #44b1b4;
   font-weight: 600;
+  transition: 1s;
+}
+
+.containerLogUser:hover .logoutBtnDiv,
+.UserHello:hover+.logoutBtnDiv {
+  display: block;
+  position: absolute;
+}
+
+.UserHello {
+  background-color: #44b1b4;
+  padding: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.UserHello:hover {
+  background-color: #818484;
+  transition: 1s;
+}
+
+.logoutBtnDiv {
+  display: none;
+  background-color: #ffffff;
+  padding: 15px;
+  width: auto;
+  border-radius: 8px;
+}
+
+.logoutBtn {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.logoutBtn:hover {
+  background-color: #696d69;
+}
+
+.form-container {
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.radio-options {
+  display: flex;
+  gap: 10px;
+}
+
+.work-experience-form {
+  margin-top: 10px;
+}
+
+/* YourFormStyle.css */
+
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-btn {
+  background-color: #44b1b4;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer; 
+  transition: 1s;
+}
+
+.form-btn:hover {
+  background-color: #16696c;
+ 
+}
+
+.radio-options {
+  display: flex;
+  gap: 10px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+}
+
+.work-experience-form {
+  margin-top: 10px;
 }
