@@ -9,6 +9,8 @@ import UserResume from './pages/userResume'
 import BigResume from './component/savedResumes/BigResume'
 import { useContext } from "react";
 import { UserContext } from "../src/context/User";
+import { FormDataProvider } from './context/FormData'
+
 function App() {
   const { user } = useContext(UserContext)
   return (
@@ -17,9 +19,13 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/MadeMeResume" element={<MadeMeResume />} />
-          <Route path='/UserResume' element={<UserResume/> } />
-          <Route path='/UserResume/:ResumeId' element={<BigResume/> } />
+          <Route path="/MadeMeResume" element={
+            <FormDataProvider>
+              <MadeMeResume />
+            </FormDataProvider>
+          } />
+          <Route path='/UserResume' element={<UserResume />} />
+          <Route path='/UserResume/:ResumeId' element={<BigResume />} />
           {!user ? <Route path="/Authentication" element={
             <Authentication />} /> : null}
         </Routes>

@@ -162,6 +162,9 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+.goLogIn{
+  margin-top: 10px;
+}
 .goSeeItLink{
   text-decoration: none;
 }
@@ -191,6 +194,8 @@ body {
   }
 }
 .form-btn {
+  display: inline;
+  width: max-content;
   background-color: #44b1b4;
   color: white;
   padding: 10px 15px;

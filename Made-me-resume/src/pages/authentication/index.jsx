@@ -29,14 +29,14 @@ export default function Authentication() {
         console.log(formDataSignUp)
         setFormDatasSignUp([...formDatasSignUp, { ...formDataSignUp }])
         register(formDataSignUp.email, formDataSignUp.password1)
-        navigate('/'); 
+        navigate('/MadeMeResume'); 
     }
     const submitFormLogIn = (e) => {
         e.preventDefault()
         console.log(formDataLogIn)
         setFormDatasLogIn([...formDatasLogIn, { ...formDataLogIn }])
         login(formDataLogIn.email, formDataLogIn.password)
-        navigate('/'); 
+        navigate('/MadeMeResume'); 
     }
     return (
         <div className="containerAuth">

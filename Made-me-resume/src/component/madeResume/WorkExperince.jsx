@@ -1,22 +1,25 @@
 import React, { useState } from 'react'
+import { useFormData } from '../../context/FormData';
 
 export default function WorkExperince(props) {
+  const { formData, setFormData } = useFormData();
   const [workExperince, setWorkExperince]=useState({})
-  const [jobs, setJobs]=useState([])
+
   const handleInputChange = (e) => {
     workExperince[e.target.name] = e.target.value
     setWorkExperince({...workExperince })
     console.log(workExperince);
   };
-  const addJob=(e) => {
-    e.preventDefault()
-    setJobs([...jobs, {...workExperince}])
-    setWorkExperince({})
-    console.log(jobs);
+
+  const addJob = (e) => {
+    e.preventDefault();
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      jobs: [...prevFormData.jobs, { ...workExperince }],
+    }));
+    setWorkExperince({});
+  };
   
-    props.setFormData(jobs)
-    console.log(props.formData);
-  }
   return (
     <div>
       <label htmlFor="workExperience">Do you have work experience?</label><br />
@@ -51,7 +54,7 @@ export default function WorkExperince(props) {
           <input onChange={handleInputChange} type="text" name='Role' className="form-input" /><br />
           <label htmlFor="FrameTime"> Frame time</label><br />
           <input onChange={handleInputChange} type="text" name='FrameTime' className="form-input" /><br />
-          <button onClick={addJob} className="form-btn add">Add</button>
+          <button type='button' onClick={addJob} className="form-btn add">Add</button>
         </div>
         : null
       }
