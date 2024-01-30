@@ -8,8 +8,9 @@ export const UserContext = createContext({})
 
 export default function UserProvider({ children }) {
     const [user, setUser] = useState(null);
+    const [userId, setUserId] = useState(null);
     const [userName, setUserName] = useState(null);
-    const [isLoggedIn,setIsLoggedIn]=useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -17,6 +18,8 @@ export default function UserProvider({ children }) {
                 if (user) {
                     setIsLoggedIn(true)
                     setUserName(user.email.substring(0, user.email.indexOf('@')))
+                    setUserId(user.uid)
+                    console.log(user.uid);
                 } else {
                     setIsLoggedIn(false)
                     setUserName(null)
@@ -73,7 +76,7 @@ export default function UserProvider({ children }) {
             });
     }
 
-    const shared = { user, register, login, logout, userName, setUserName }
+    const shared = { user, register, login, logout, userName, setUserName, userId }
     return (
         <UserContext.Provider value={shared}>
             {children}

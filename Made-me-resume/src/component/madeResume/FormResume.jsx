@@ -11,8 +11,9 @@ import { dB } from '../../config/firebaseConfig';
 import { addDoc, collection, onSnapshot, doc, deleteDoc, query, getDocs, where, serverTimestamp, orderBy, updateDoc } from "firebase/firestore";
 
 export default function FormResume() {
-  const { userName } = useContext(UserContext)
-  const { formData, setFormData } = useFormData();  const [selectedOption, setSelectedOption] = useState(null);
+  const { userName, user, userId } = useContext(UserContext)
+  const { formData, setFormData } = useFormData();
+  const [selectedOption, setSelectedOption] = useState(null);
   const [counter, setCounter] = useState(0)
   const [counter2, setCounter2] = useState(0)
 
@@ -61,16 +62,15 @@ export default function FormResume() {
     setCounter2(counter2 + 1)
     // Add logic to handle form submission
     console.log("Form submitted:", formData);
-    //   const collectionRef = collection(dB, 'UserDetails')
-    //   const payload = {
+    const collectionRef = collection(dB, 'UserDetails')
+    formData.userId = userId
 
-    // }
-    // const docRef = await addDoc(collectionRef, payload)
+    const docRef = await addDoc(collectionRef, formData)
+    formData.id = docRef.id
     // console.log(docRef.id);
-    // formData.id = docRef.id
   };
   const goToMessage = () => {
-    
+
   }
   return (
     <>
@@ -85,12 +85,12 @@ export default function FormResume() {
               : null
             }
             {counter < 2 ? (
-              <p  className="form-btn pBtn" onClick={() => setCounter(counter + 1)}>
+              <p className="form-btn pBtn" onClick={() => setCounter(counter + 1)}>
                 Next
               </p>
             ) : (
               counter2 == 0 ?
-                <button  type="submit" className="form-btn submitBtn">
+                <button type="submit" className="form-btn submitBtn">
                   Make resume
                 </button> : null
             )}
