@@ -39,9 +39,9 @@ export default function Authentication() {
         navigate('/'); 
     }
     return (
-        <div>
+        <div className="containerAuth">
             {logOrSign ?
-                <div>
+                <div className="signUpDiv">
                    <SignUp 
                     handleInputChangeRegister={handleInputChangeRegister}
                     submitFormRegister={submitFormRegister}
@@ -50,7 +50,7 @@ export default function Authentication() {
             <p className="lgin-signup" onClick={() => setlogOrSign(!logOrSign)}>Log in</p>
                 </div>
                 :
-                <div>
+                <div className="logInDiv">
                      <LogIn
                      handleInputChangeLogIn={handleInputChangeLogIn}
                      submitFormLogIn={submitFormLogIn}

@@ -29,8 +29,6 @@ export default function Education({ formData, setFormData }) {
     const [highSchoolDiploma, setHighSchool] = useState(null)
     const [collegeDiploma, setCollege] = useState(null)
     const [degree, setDegree] = useState(null)
-    const [school, setSchool] = useState({})
-    const [schoolName, setSchoolName] = useState({})
 
     return (
         <div>

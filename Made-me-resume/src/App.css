@@ -226,4 +226,64 @@ body {
 }
 .add{
   margin-bottom: 5px;
+  background-color: #258015;
+}
+.lgin-signup{
+  cursor: pointer;
+  color: #2dc208;
+}
+.lgin-signup:hover{
+  text-decoration: underline;
+}
+.containerAuth{}
+.logInDiv,
+.signUpDiv {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.titleSignUp {
+  text-align: center;
+  color: #333;
+}
+
+.AuthDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.signUpInput, .logInInput {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btnSubmit {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btnSubmit:hover {
+  background-color: #45a049;
+}
+
+.btnSubmit {
+  width: 100%;
+}
+
+/* Additional styling for better responsiveness */
+@media (max-width: 600px) {
+  .logInDiv,
+  .signUpDiv {
+    width: 100%;
+  }
 }
