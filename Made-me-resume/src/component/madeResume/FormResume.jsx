@@ -116,14 +116,14 @@ export default function FormResume() {
             ) : (
               counter2 == 0 ?
                 <>
-                  <button className='goSeeItBtn' onClick={()=>{setPreviewMode(!previewMode)}} type='button'>Preview</button>
-                  <button disabled={!(loader === false)} onClick={downloadPdf} type="submit" className="form-btn submitBtn">
+                  <button className='form-btn submitBtn' type='submit'>Make your resume</button>
+                  {/* <button disabled={!(loader === false)} onClick={downloadPdf} type="submit" className="goSeeItBtn">
                     {loader ? (
                       <span>Downloading</span>
                     ) : (
                       <span>Download</span>
                     )}
-                  </button>
+                  </button> */}
                 </>
                 : null
             )}

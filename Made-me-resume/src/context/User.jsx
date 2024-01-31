@@ -1,6 +1,8 @@
 import React, { createContext, useEffect, useState } from "react";
 import { auth } from "../config/firebaseConfig";
 import { signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { dB } from "../config/firebaseConfig";
+import { addDoc, collection, onSnapshot, doc, deleteDoc, query, getDocs, where, serverTimestamp, orderBy, updateDoc } from "firebase/firestore";
 export const UserContext = createContext({})
 
 //* login להתחבר 
@@ -19,7 +21,7 @@ export default function UserProvider({ children }) {
                     setIsLoggedIn(true)
                     setUserName(user.email.substring(0, user.email.indexOf('@')))
                     setUserId(user.uid)
-                    console.log(user.uid);
+                    console.log(user.uid)
                 } else {
                     setIsLoggedIn(false)
                     setUserName(null)
@@ -33,11 +35,13 @@ export default function UserProvider({ children }) {
 
     const register = (email, password) => {
         createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
+            .then(async(userCredential) => {
                 alert('you have successfully signed up')
                 setUser(userCredential)
                 const user = userCredential.user;
                 console.log(user);
+                const collectionRef = collection(dB, 'UserRole')
+                const docRef = await addDoc(collectionRef, {email: email, password: password,role:'user'})
             })
             .catch((error) => {
                 alert('this email is already registered')
@@ -53,7 +57,7 @@ export default function UserProvider({ children }) {
                 setUser(userCredential)
                 // Signed in 
                 const user = userCredential.user;
-                console.log(user);
+                console.log(user)
             })
             .catch((error) => {
                 alert('this email is not registered')
