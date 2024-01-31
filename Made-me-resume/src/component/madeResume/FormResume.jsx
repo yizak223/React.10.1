@@ -47,37 +47,38 @@ export default function FormResume() {
     })
   }
   const renderCurrentStep = () => {
-    if(!previewMode){
-    switch (counter) {
-      case 0:
-        return <PrivateDetails handleInputChange={handleInputChange} />;
-      case 1:
-        return (
-          <WorkExperince
-            selectedOption={selectedOption}
+    if (!previewMode) {
+      switch (counter) {
+        case 0:
+          return <PrivateDetails handleInputChange={handleInputChange} />;
+        case 1:
+          return (
+            <WorkExperince
+              selectedOption={selectedOption}
+              handleInputChange={handleInputChange}
+              handleOptionChange={handleOptionChange}
+            />
+          );
+        case 2:
+          return <Education
             handleInputChange={handleInputChange}
-            handleOptionChange={handleOptionChange}
-          />
-        );
-      case 2:
-        return <Education
-          handleInputChange={handleInputChange}
-        />;
-      case 3:
-        return <MessageSent />;
-      default:
-        return null;
-    }}
-    else{
+          />;
+        case 3:
+          return <MessageSent />;
+        default:
+          return null;
+      }
+    }
+    else {
       return <>
-      <PrivateDetails handleInputChange={handleInputChange} />
-      <WorkExperince
-        selectedOption={selectedOption}
-        handleInputChange={handleInputChange}
-        handleOptionChange={handleOptionChange} />
-      <Education
-        handleInputChange={handleInputChange} />
-    </>
+        <PrivateDetails handleInputChange={handleInputChange} />
+        <WorkExperince
+          selectedOption={selectedOption}
+          handleInputChange={handleInputChange}
+          handleOptionChange={handleOptionChange} />
+        <Education
+          handleInputChange={handleInputChange} />
+      </>
     }
   }
 
@@ -89,10 +90,8 @@ export default function FormResume() {
     console.log("Form submitted:", formData);
     const collectionRef = collection(dB, 'UserDetails')
     formData.userId = userId
-
     const docRef = await addDoc(collectionRef, formData)
     formData.id = docRef.id
-    // console.log(docRef.id);
   };
   const goToMessage = () => {
 

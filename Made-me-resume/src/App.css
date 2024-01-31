@@ -162,12 +162,15 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-.goLogIn{
+
+.goLogIn {
   margin-top: 10px;
 }
-.goSeeItLink{
+
+.goSeeItLink {
   text-decoration: none;
 }
+
 .goSeeItBtn {
   width: max-content;
   background-color: #af4c9d;
@@ -178,21 +181,26 @@ body {
   border-radius: 4px;
   cursor: pointer;
   transform: scale(1) translateY(0);
-  animation: growAndMove 0.5s infinite alternate; /* Adjust the duration and other values as needed */
+  animation: growAndMove 0.5s infinite alternate;
+  /* Adjust the duration and other values as needed */
 }
-.btnContainer{
+
+.btnContainer {
   margin-top: 5px;
   display: flex;
   /* justify-content: space-between; */
 }
+
 @keyframes growAndMove {
   0% {
     transform: scale(1) translateY(0);
   }
+
   100% {
     transform: scale(1.1) translateY(-5px);
   }
 }
+
 .form-btn {
   display: inline;
   width: max-content;
@@ -201,21 +209,24 @@ body {
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
-  cursor: pointer; 
+  cursor: pointer;
   margin-right: 5px;
   transition: 1s;
 }
 
 .form-btn:hover {
   background-color: #16696c;
- 
+
 }
-.submitBtn{
+
+.submitBtn {
   background-color: #258015;
 }
-.submitBtn:hover{
+
+.submitBtn:hover {
   background-color: #6db860;
 }
+
 .radio-options {
   display: flex;
   gap: 10px;
@@ -229,18 +240,23 @@ body {
 .work-experience-form {
   margin-top: 10px;
 }
-.add{
+
+.add {
   margin-bottom: 5px;
   background-color: #258015;
 }
-.lgin-signup{
+
+.lgin-signup {
   cursor: pointer;
   color: #2dc208;
 }
-.lgin-signup:hover{
+
+.lgin-signup:hover {
   text-decoration: underline;
 }
-.containerAuth{}
+
+.containerAuth {}
+
 .logInDiv,
 .signUpDiv {
   max-width: 400px;
@@ -261,7 +277,8 @@ body {
   flex-direction: column;
 }
 
-.signUpInput, .logInInput {
+.signUpInput,
+.logInInput {
   margin-bottom: 15px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -287,23 +304,30 @@ body {
 
 /* Additional styling for better responsiveness */
 @media (max-width: 600px) {
+
   .logInDiv,
   .signUpDiv {
     width: 100%;
   }
 }
-.secondTitle{
+
+.secondTitle {
   color: #888383;
   margin: 10px 0 30px 0;
 }
-.forBreak{
+
+.forBreak {
   display: block;
 }
-.dateInput{
+
+.dateInput {
   display: flex;
   gap: 30px;
 }
-.ExampleWork ,.addAnother, .Delete{
+
+.ExampleWork,
+.addAnother,
+.Delete {
   color: rgb(68, 66, 66);
   display: flex;
   flex-direction: row;
@@ -314,37 +338,153 @@ body {
   border: solid 0.5px #16696c;
   margin: 0 0 10px 0;
 }
-.addAnother{
+
+.addAnother {
   width: 100%;
   cursor: pointer;
   transition: 0.5s;
 }
-.Delete{
+
+.Delete {
   color: rgb(219, 211, 211);
   width: 100%;
   cursor: pointer;
   transition: 0.5s;
   background-color: rgb(225, 28, 28);
 }
-.Delete:hover{
+
+.Delete:hover {
   background-color: rgb(235, 79, 79);
   color: #000;
 }
-.addAnother:hover{
+
+.addAnother:hover {
   background-color: #939ba3;
   box-shadow: inset;
 }
-.wordExample{
-    color: white;
-    /* line-height: 16px; */
-    display: inline-block;
-    background-color: rgb(38, 160, 244);
-    border-radius: 3px;
-    padding: 4px 8px;
-    font-family: Roboto, sans;
-    font-size: 12px;
+
+.wordExample {
+  color: white;
+  display: inline-block;
+  background-color: rgb(38, 160, 244);
+  border-radius: 3px;
+  padding: 4px 8px;
+  font-family: Roboto, sans;
+  font-size: 12px;
 }
-.secondLine{
+
+.secondLine {
   margin-top: 3px;
   color: grey;
+}
+
+.containerResume {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: center;
+}
+
+.resumeCard {
+  font-size: 5px;
+  color: #aeafb0;
+  background-color: rgb(255, 255, 255);
+  width: 20vw;
+  height: 40vh;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+}
+.resumeCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+  padding: 0;
+}
+
+
+
+.firstPargraph {
+}
+
+.blackTitle {
+  color: rgb(0, 0, 0);
+}
+
+.nameTitle {
+  font-size: 8px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+}
+
+h1 {
+  color: #333;
+}
+
+h2 {
+  color: #555;
+}
+
+h3 {
+  color: #007bff;
+}
+
+h4 {
+  color: #555;
+}
+
+.secondLine {
+  color: #777;
+}
+
+.smallCard {
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 3px;
+  margin-bottom: 10px;
+}
+.smallCardJobs{
+  padding: 3px;
+  margin-bottom: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+.containerFirstPargraph{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom:  solid 0.1px #000;
+  margin-bottom: 5px;
+}
+.cardTitle {
+  color: #007bff;
+}
+
+.cardContent {
+  color: #555;
+}
+
+.jobCard {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .resumeCard {
+    max-width: 100%;
+  }
 }

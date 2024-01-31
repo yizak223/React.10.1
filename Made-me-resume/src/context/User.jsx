@@ -21,7 +21,6 @@ export default function UserProvider({ children }) {
                     setIsLoggedIn(true)
                     setUserName(user.email.substring(0, user.email.indexOf('@')))
                     setUserId(user.uid)
-                    console.log(user.uid)
                 } else {
                     setIsLoggedIn(false)
                     setUserName(null)

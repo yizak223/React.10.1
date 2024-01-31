@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useContext } from 'react';
-import FormResume from "../../component/madeResume/FormResume";
 import { UserContext } from '../../context/User';
 import { onAuthStateChanged } from "firebase/auth";
 import { addDoc, collection, onSnapshot, doc, deleteDoc, query, getDocs, where, serverTimestamp, orderBy, updateDoc } from "firebase/firestore";
@@ -18,9 +17,15 @@ export default function UserResume() {
         if (user) {
           const collectionRef = collection(dB, 'UserDetails');
           const qUser = query(collectionRef, where("userId", "==", user.uid));
-          const snapshot = await getDocs(qUser);
-          const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-          setUserResumeData(results);
+
+          const unsub = onSnapshot((qUser), (snapshot) =>
+          setUserResumeData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))))
+          return unsub
+
+          // const snapshot = await getDocs(qUser);
+          // const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+          // setUserResumeData(results);
+
           console.log(userResumeData);
         }
       });
@@ -32,17 +37,17 @@ export default function UserResume() {
 
 
   return (
-    <>
+    <div className="containerResume">
       {
         userResumeData?.map((res, index) => {
           return (
-            <div className="containerResume" key={index}>
-              <SmallCardResume res={res}/>
+            <div key={index}>
+              <SmallCardResume res={res} />
             </div>
           )
         })
       }
-    </>
+    </div>
 
   )
 }
