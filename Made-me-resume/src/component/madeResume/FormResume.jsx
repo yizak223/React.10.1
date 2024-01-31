@@ -9,6 +9,8 @@ import { UserContext } from '../../context/User';
 import { useFormData } from '../../context/FormData';
 import { dB } from '../../config/firebaseConfig';
 import { addDoc, collection, onSnapshot, doc, deleteDoc, query, getDocs, where, serverTimestamp, orderBy, updateDoc } from "firebase/firestore";
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 export default function FormResume() {
   const { userName, user, userId } = useContext(UserContext)
@@ -16,6 +18,8 @@ export default function FormResume() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [counter, setCounter] = useState(0)
   const [counter2, setCounter2] = useState(0)
+  const [previewMode, setPreviewMode] = useState(false)
+  const [loader, setLoader] = useState(false)
 
   const handleInputChange = (e) => {
     formData[e.target.name] = e.target.value
@@ -29,16 +33,27 @@ export default function FormResume() {
     setFormData({ ...formData })
     console.log(formData);
   };
+  const downloadPdf = () => {
+    const capture = document.querySelector('.form-container')
+    setLoader(true)
+    html2canvas(capture).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png')
+      const doc = new jsPDF('p', 'mm', 'a4')
+      const componentsWidth = doc.internal.pageSize.getWidth()
+      const componentsHeight = doc.internal.pageSize.getHeight()
+      doc.addImage(imgData, 'PNG', 0, 0, componentsWidth, componentsHeight)
+      setLoader(false)
+      doc.save('Resume.pdf')
+    })
+  }
   const renderCurrentStep = () => {
-
+    if(!previewMode){
     switch (counter) {
       case 0:
         return <PrivateDetails handleInputChange={handleInputChange} />;
       case 1:
         return (
           <WorkExperince
-            formData={formData}
-            setFormData={setFormData}
             selectedOption={selectedOption}
             handleInputChange={handleInputChange}
             handleOptionChange={handleOptionChange}
@@ -46,16 +61,26 @@ export default function FormResume() {
         );
       case 2:
         return <Education
-          formData={formData}
-          setFormData={setFormData}
           handleInputChange={handleInputChange}
         />;
       case 3:
         return <MessageSent />;
       default:
         return null;
+    }}
+    else{
+      return <>
+      <PrivateDetails handleInputChange={handleInputChange} />
+      <WorkExperince
+        selectedOption={selectedOption}
+        handleInputChange={handleInputChange}
+        handleOptionChange={handleOptionChange} />
+      <Education
+        handleInputChange={handleInputChange} />
+    </>
     }
-  };
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setCounter(counter + 1)
@@ -90,9 +115,17 @@ export default function FormResume() {
               </p>
             ) : (
               counter2 == 0 ?
-                <button type="submit" className="form-btn submitBtn">
-                  Make resume
-                </button> : null
+                <>
+                  <button className='goSeeItBtn' onClick={()=>{setPreviewMode(!previewMode)}} type='button'>Preview</button>
+                  <button disabled={!(loader === false)} onClick={downloadPdf} type="submit" className="form-btn submitBtn">
+                    {loader ? (
+                      <span>Downloading</span>
+                    ) : (
+                      <span>Download</span>
+                    )}
+                  </button>
+                </>
+                : null
             )}
           </form>
         </div>

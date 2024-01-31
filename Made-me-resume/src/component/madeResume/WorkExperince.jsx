@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { useFormData } from '../../context/FormData';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 export default function WorkExperince(props) {
   const { formData, setFormData } = useFormData();
-  const [workExperince, setWorkExperince]=useState({})
+  const [ AddJob, setAddJob]=useState(false)
+  const [workExperince, setWorkExperince] = useState({})
 
   const handleInputChange = (e) => {
     workExperince[e.target.name] = e.target.value
-    setWorkExperince({...workExperince })
+    setWorkExperince({ ...workExperince })
     console.log(workExperince);
   };
 
@@ -18,43 +20,55 @@ export default function WorkExperince(props) {
       jobs: [...prevFormData.jobs, { ...workExperince }],
     }));
     setWorkExperince({});
+    setAddJob(false)
   };
-  
+
   return (
     <div>
-      <label htmlFor="workExperience">Do you have work experience?</label><br />
-      <div className="radio-options">
-        <label htmlFor="yesWorkExperience" className="radio-label">
-          <input
-            type="radio"
-            name="WorkExperience"
-            value="yesWorkExperience"
-            checked={props.selectedOption === 'yesWorkExperience'}
-            onChange={props.handleOptionChange}
-          />
-          Yes
-        </label>
-        <label htmlFor="noWorkExperience" className="radio-label">
-          <input
-            type="radio"
-            name="WorkExperience"
-            value="noWorkExperience"
-            checked={props.selectedOption === 'noWorkExperience'}
-            onChange={props.handleOptionChange}
-          />
-          No
-        </label>
-      </div><br />
-      {/* //!work experience details */}
-      {props.selectedOption === 'yesWorkExperience' ?
+      <h1>Work Experience</h1>
+      <h3>Great! Let's fill out your work experience next</h3>
+      <h4 className='secondTitle'>Start with your most recent position and work backwards.
+        Just add the most recent and relevant positions if you have lots of experience.</h4>
+      <div className='ExampleWork'>
+        <div>
+          <h3>Sales Associate</h3>
+          <h5 className='secondLine'>Louis Vuitton . Jun 2013- Mar 2017</h5>
+        </div>
+        <div>
+          <p className='wordExample'>Example</p>
+        </div> 
+      </div>
+   { formData.jobs.map((element,index)=>{
+    return(
+      <div key={index} className='ExampleWork'>
+        <div>
+          <h3>{element.Role}</h3>
+          <h5 className='secondLine'>{element.CompanyName} . {element.startDate}-{element.endtDate}</h5>
+        </div>
+      </div>
+    )
+   })  }
+      <button onClick={()=>{setAddJob(!AddJob)}} className={!AddJob? 'addAnother': 'Delete'} type='button'>{!AddJob? 'Add Another': 'Delete'}</button>
+      {AddJob ?
         <div className="work-experience-form">
-          <label htmlFor="CompanyName">Company name</label><br />
-          <input onChange={handleInputChange} type="text" name='CompanyName' className="form-input" /><br />
-          <label htmlFor="Role">Role</label><br />
-          <input onChange={handleInputChange} type="text" name='Role' className="form-input" /><br />
-          <label htmlFor="FrameTime"> Frame time</label><br />
-          <input onChange={handleInputChange} type="text" name='FrameTime' className="form-input" /><br />
-          <button type='button' onClick={addJob} className="form-btn add">Add</button>
+          <label htmlFor="workExperience">Experience</label><br />
+          <label htmlFor="CompanyName"></label><br />
+          <input required onChange={handleInputChange} type="text" name='CompanyName' className="form-input" placeholder='Copmany' /><br />
+          <input required onChange={handleInputChange} type="text" name='Role' className="form-input" placeholder='Title/Position' /><br />
+          <label htmlFor="Role"></label><br />
+          <div className='dateInput'>
+            <div>
+              <label htmlFor="startDate">Start Date: </label><br />
+              <input required onChange={handleInputChange} type="date" name='startDate' className="form-input" placeholder='Start Date' /><br />
+            </div>
+            <div>
+              <label htmlFor="endtDate">End Date</label><br />
+              <input type="date" onChange={handleInputChange} className="form-input" name='endtDate' /><br />
+            </div>
+          </div>
+          <label htmlFor="Description"> </label><br />
+          <textarea required onChange={handleInputChange} name="Description" cols="30" rows="10" className="form-textarea" placeholder='Functions and achievements'></textarea><br />
+          <button type='button' onClick={addJob} className="form-btn add">Save</button>
         </div>
         : null
       }

@@ -9,6 +9,7 @@ export const useFormData = () => {
 export const FormDataProvider = ({ children }) => {
   const [formData, setFormData] = useState({
     jobs: [],
+    Education: [],
   });
 
   return (
