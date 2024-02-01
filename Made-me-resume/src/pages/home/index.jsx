@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
         <About />
-        <Testemonies />
+        {/* <Testemonies /> */}
     </div>
   )
 }

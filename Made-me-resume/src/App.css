@@ -565,7 +565,6 @@ h4 {
 }
 .listOptions{
   color: #fff;
-  font-size: 20px;
 }
 li{
     padding: 5px;
@@ -591,7 +590,7 @@ li{
 }
 .containerHero{
   background-color: #113853;
-
+  padding-bottom: 10vh;
 }
 .btn {
   margin-top: 1rem;
@@ -648,4 +647,28 @@ iframe {
   position: relative;
   top: -105px;
   left: 255px;
+}
+.containerPageAbout{
+  display: flex;
+  flex-direction: column;
+}
+.containerSteps{
+  background-color: #fff;
+  
+}
+.steps{
+  margin: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.steps h3{
+    color: #2d3235;
+    font-size: 25px;
+
+}
+.step1 , .step2 , .step3{
+  height: 20vh;
+  width: 15vw;
+  font-size: 15px;
 }
