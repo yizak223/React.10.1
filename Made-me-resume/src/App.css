@@ -1,45 +1,18 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root {
+  --normal-font: 400;
+  --bold-font: 600;
+  --bolder-font: 900;
+  --primary-color: #0652dd;
+  --secondary-color: #ea2027;
+  --line-height: 1.7rem;
+  --transition: 0.4s ease-in;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Smooth scroll effect */
+html {
+  scroll-behavior: smooth;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */
 * {
   margin: 0;
 }
@@ -125,7 +98,7 @@ body {
 }
 
 .form-container {
-  max-width: 400px;
+  max-width: 50vw;
   padding: 20px;
   border-radius: 5px;
   background-color: white;
@@ -142,7 +115,7 @@ body {
 }
 
 .form-container {
-  max-width: 400px;
+  max-width: 40vw;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -161,6 +134,7 @@ body {
   background-color: #f2f2f2;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 16px;
 }
 
 .goLogIn {
@@ -314,6 +288,7 @@ body {
 .secondTitle {
   color: #888383;
   margin: 10px 0 30px 0;
+  font-size: 18px;
 }
 
 .forBreak {
@@ -346,7 +321,7 @@ body {
 }
 
 .Delete {
-  color: rgb(219, 211, 211);
+  color: rgb(255, 255, 255);
   width: 100%;
   cursor: pointer;
   transition: 0.5s;
@@ -386,7 +361,8 @@ body {
   justify-content: center;
 }
 
-.resumeCard {
+.resumeCard,
+.resumeCardBig {
   font-size: 5px;
   color: #aeafb0;
   background-color: rgb(255, 255, 255);
@@ -399,18 +375,28 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: 0.5s;
 }
+
+.resumeCardBig {
+  width: 50vw;
+  height: 110vh;
+  font-size: 18px;
+}
+
 .resumeCard:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-ul {
-  padding: 0;
+.roleTitlebig {
+  font-size: 15px;
+  color: #8f8b8b;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 2px;
 }
 
-
-
-.firstPargraph {
+ul {
+  padding: 0;
 }
 
 .blackTitle {
@@ -419,6 +405,14 @@ ul {
 
 .nameTitle {
   font-size: 8px;
+}
+
+.nameTitleBig {
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 2px;
+  font-size: 36px;
+  margin: 15px 0 20px 0;
 }
 
 h1,
@@ -432,6 +426,7 @@ p {
 
 h1 {
   color: #333;
+  font-size: 48px;
 }
 
 h2 {
@@ -440,6 +435,7 @@ h2 {
 
 h3 {
   color: #007bff;
+  font-size: 28px;
 }
 
 h4 {
@@ -450,33 +446,52 @@ h4 {
   color: #777;
 }
 
-.smallCard {
+.smallCard, .smallCardRealy {
   background-color: #f8f9fa;
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 3px;
   margin-bottom: 10px;
+  padding: 20px 3px 20px 0;
 }
-.smallCardJobs{
+.smallCardRealy{
+  margin: 0;
   padding: 3px;
+}
+
+/*  */
+.smallCardJobs {
+  padding: 20px 3px 20px 0;
   margin-bottom: 10px;
   background-color: #f8f9fa;
   border: 1px solid #ccc;
   border-radius: 8px;
 }
-.containerFirstPargraph{
+.smallCardJobsReally{
+  margin: 0;
+  padding: 3px;
+}
+.containerFirstPargraph {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  border-bottom:  solid 0.1px #000;
+  border-bottom: solid 0.1px #000;
   margin-bottom: 5px;
 }
+
 .cardTitle {
-  color: #007bff;
+  color: #524e4e;
 }
 
 .cardContent {
-  color: #555;
+  color: #000000;
+  margin: 15px 0 15px 0;
+}
+.cardContent{
+  margin: 0;
+}
+
+.cardDescription {
+  color: #000000;
 }
 
 .jobCard {
@@ -487,4 +502,150 @@ h4 {
   .resumeCard {
     max-width: 100%;
   }
+}
+
+.contactDetails {
+  align-self: flex-end;
+  margin-bottom: 15px;
+}
+
+.AboutMe {
+  margin: 50px 0 15px 0;
+}
+
+.containerAllPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.containerButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 40px;
+}
+
+.BackBtn {
+  display: inline;
+  width: max-content;
+  background-color: #44b1b4;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+  text-decoration: none;
+  transition: 1s;
+}
+
+.btnResume {
+  width: fit-content;
+  padding: 10px 15px;
+  margin: 0;
+}
+.btnResumeHover:hover{
+  transition: 0.5s;
+  color: #000;
+}
+.intro-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.intro-text h3 {
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  line-height: var(--line-height);
+  color: #ffffff;
+}
+.listOptions{
+  color: #fff;
+  font-size: 20px;
+}
+li{
+    padding: 5px;
+
+}
+.hear {
+  color: rgb(255, 255, 255);
+  font-size: 56px;
+}
+
+.connecting {
+  color: var(--secondary-color);
+}
+.hero{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.9rem;
+  max-width: 1100px;
+  padding-top: 10vh;
+  margin: 0 auto -6rem;
+  background-color: #113853;
+}
+.containerHero{
+  background-color: #113853;
+
+}
+.btn {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 0.8rem 0.6rem;
+  border: none;
+  font-size: 1.4rem;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.red {
+  background-color: #fc676a;
+  margin-right: 1.5rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.red:hover {
+  background-color: #f1262d;
+  color: #fff;
+}
+
+.blue {
+  background-color: var(--primary-color);
+}
+
+.blue:hover {
+  background-color: #095cf7;
+  color: #fff;
+}
+iframe {
+  max-width: 30rem;
+  border-top: 40px groove var(--primary-color);
+  border-bottom: 40px groove var(--primary-color);
+  border-right: 28px solid var(--secondary-color);
+  border-left: 28px solid var(--secondary-color);
+}
+
+.stand-1 {
+  height: 90px;
+  width: 6px;
+  background-color: var(--primary-color);
+  transform: rotate(40deg);
+  position: relative;
+  top: -16px;
+  left: 200px;
+}
+.stand-2 {
+  height: 90px;
+  width: 6px;
+  background-color: var(--secondary-color);
+  transform: rotate(-40deg);
+  position: relative;
+  top: -105px;
+  left: 255px;
 }

@@ -13,10 +13,12 @@ import { FormDataProvider } from './context/FormData'
 
 function App() {
   const { user } = useContext(UserContext)
+  const [path, setPath] = useState();
+
   return (
     <>
       <BrowserRouter>
-        <NavBar />
+        <NavBar path={path} setPath={setPath} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/MadeMeResume" element={
@@ -25,7 +27,7 @@ function App() {
             </FormDataProvider>
           } />
           <Route path='/UserResume' element={<UserResume />} />
-          <Route path='/UserResume/:ResumeId' element={<BigResume />} />
+          <Route  path='/UserResume/:ResumeId' element={<BigResume setPath={setPath}/>} />
           {!user ? <Route path="/Authentication" element={
             <Authentication />} /> : null}
         </Routes>

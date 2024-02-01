@@ -3,8 +3,8 @@ import React from 'react'
 export default function PrivateDetails(props) {
   return (
     <div>
-      <h2>Tell us a little about yourself</h2>
-      <h4 className='secondTitle'>Contact Information</h4>
+      <h1>Tell us a little about yourself</h1>
+      <h3 >Contact Information</h3>
       <label htmlFor="FullName"></label><br />
       <input required onChange={props.handleInputChange} name='FullName' type="text" className="form-input" placeholder='Full Name' /><br />
       <label htmlFor="Email"></label><br />

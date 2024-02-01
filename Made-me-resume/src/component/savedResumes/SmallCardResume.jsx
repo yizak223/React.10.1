@@ -4,7 +4,7 @@ import { collection, doc, deleteDoc} from 'firebase/firestore';
 import { dB } from '../../config/firebaseConfig';
 
 const SmallCardEducation = ({ title, content, descriprion, date }) => (
-  <div className="smallCard">
+  <div className="smallCardRealy">
     <p className="cardTitle">{title}</p>
     <p className="cardContent">{content}</p>
     <p className='date'>{date}</p>
@@ -12,9 +12,9 @@ const SmallCardEducation = ({ title, content, descriprion, date }) => (
   </div>
 );
 const SmallCardJobs = ({ title, content }) => (
-  <div className="smallCardJobs">
+  <div className="smallCardJobs smallCardJobsReally">
     <p className="cardTitle">{title}</p>
-    <p className="cardContent">{content}</p>
+    <p className="cardContent cardContentReally">{content}</p>
   </div>
 );
 
@@ -42,7 +42,7 @@ const SmallCardResume = ({ res }) => {
           <p>{res.Email}</p>
         </div>
       </div>
-      <div className="smallCard blackTitle">
+      <div className="smallCardRealy blackTitle">
         <p>{res.AboutMe}</p>
       </div>
       <ul>
@@ -70,7 +70,10 @@ const SmallCardResume = ({ res }) => {
       </ul>
 
     </div>
-    <button onClick={deleteResume}>Delete</button>
+    <div className='containerButtons'>
+      <button className='Delete btnResume btnResumeHover' onClick={deleteResume}><i className="fa-sharp fa-solid fa-trash"></i></button>
+    </div>
+    
     </>
   );
 }

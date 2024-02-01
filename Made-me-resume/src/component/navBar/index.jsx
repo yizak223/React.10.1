@@ -3,10 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/User";
 
-export default function NavBar() {
+export default function NavBar({path, setPath}) {
     const location = useLocation();
     const { userName, logout } = useContext(UserContext)
-    const [path, setPath] = useState();
 
     useEffect(() => {
         setPath(location.pathname);
