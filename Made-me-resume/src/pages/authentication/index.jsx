@@ -4,8 +4,9 @@ import React,{useContext} from 'react'
 import { useState } from "react";
 import {UserContext} from '../../context/User'
 import { useNavigate } from "react-router-dom";
+import NavBar from "../../component/navBar";
 
-export default function Authentication() {
+export default function Authentication({path, setPath}) {
     const navigate = useNavigate();
     const { register, login}=useContext(UserContext)
     const [formDatasSignUp, setFormDatasSignUp] = useState([])
@@ -39,6 +40,8 @@ export default function Authentication() {
         navigate('/MadeMeResume'); 
     }
     return (
+        <>
+        {/* <NavBar path={path} setPath={setPath} /> */}
         <div className="containerAuth">
             {logOrSign ?
                 <div className="signUpDiv">
@@ -60,5 +63,6 @@ export default function Authentication() {
                 </div>
             }
         </div>
+        </>
     )
 }

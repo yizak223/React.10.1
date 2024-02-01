@@ -29,7 +29,7 @@ function App() {
           <Route path='/UserResume' element={<UserResume />} />
           <Route  path='/UserResume/:ResumeId' element={<BigResume setPath={setPath}/>} />
           {!user ? <Route path="/Authentication" element={
-            <Authentication />} /> : null}
+            <Authentication path={path} setPath={setPath}/>} /> : null}
         </Routes>
       </BrowserRouter>
     </>

@@ -375,6 +375,9 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: 0.5s;
 }
+.resumeCard{
+  opacity: 50%;
+}
 
 .resumeCardBig {
   width: 50vw;
@@ -385,6 +388,7 @@ body {
 .resumeCard:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  opacity: 1;
 }
 
 .roleTitlebig {
@@ -446,14 +450,16 @@ h4 {
   color: #777;
 }
 
-.smallCard, .smallCardRealy {
+.smallCard,
+.smallCardRealy {
   background-color: #f8f9fa;
   border: 1px solid #ccc;
   border-radius: 8px;
   margin-bottom: 10px;
   padding: 20px 3px 20px 0;
 }
-.smallCardRealy{
+
+.smallCardRealy {
   margin: 0;
   padding: 3px;
 }
@@ -466,10 +472,12 @@ h4 {
   border: 1px solid #ccc;
   border-radius: 8px;
 }
-.smallCardJobsReally{
+
+.smallCardJobsReally {
   margin: 0;
   padding: 3px;
 }
+
 .containerFirstPargraph {
   display: flex;
   justify-content: space-between;
@@ -486,7 +494,8 @@ h4 {
   color: #000000;
   margin: 15px 0 15px 0;
 }
-.cardContent{
+
+.cardContent {
   margin: 0;
 }
 
@@ -546,10 +555,12 @@ h4 {
   padding: 10px 15px;
   margin: 0;
 }
-.btnResumeHover:hover{
+
+.btnResumeHover:hover {
   transition: 0.5s;
   color: #000;
 }
+
 .intro-text h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
@@ -563,13 +574,16 @@ h4 {
   line-height: var(--line-height);
   color: #ffffff;
 }
-.listOptions{
+
+.listOptions {
   color: #fff;
 }
-li{
-    padding: 5px;
+
+li {
+  padding: 5px;
 
 }
+
 .hear {
   color: rgb(255, 255, 255);
   font-size: 56px;
@@ -578,7 +592,8 @@ li{
 .connecting {
   color: var(--secondary-color);
 }
-.hero{
+
+.hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -588,10 +603,12 @@ li{
   margin: 0 auto -6rem;
   background-color: #113853;
 }
-.containerHero{
+
+.containerHero {
   background-color: #113853;
   padding-bottom: 10vh;
 }
+
 .btn {
   margin-top: 1rem;
   display: inline-block;
@@ -607,6 +624,7 @@ li{
   margin-right: 1.5rem;
   cursor: pointer;
   transition: 0.5s;
+  width: fit-content;
 }
 
 .red:hover {
@@ -622,6 +640,7 @@ li{
   background-color: #095cf7;
   color: #fff;
 }
+
 iframe {
   max-width: 30rem;
   border-top: 40px groove var(--primary-color);
@@ -639,6 +658,7 @@ iframe {
   top: -16px;
   left: 200px;
 }
+
 .stand-2 {
   height: 90px;
   width: 6px;
@@ -648,27 +668,63 @@ iframe {
   top: -105px;
   left: 255px;
 }
-.containerPageAbout{
+
+.containerPageAbout {
+  background-color: #ffffff;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
-.containerSteps{
+
+.containerSteps {
+  padding-top: 5vh;
   background-color: #fff;
-  
+  display: flex;
+  flex-direction: column;
 }
-.steps{
+
+.containerSteps h1 {
+  text-align: center;
+  color: #113853;
+}
+
+.steps {
   margin: 5vh;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
-.steps h3{
-    color: #2d3235;
-    font-size: 25px;
 
+.steps h3 {
+  color: #2d3235;
+  font-size: 25px;
+  color: #113853;
 }
-.step1 , .step2 , .step3{
-  height: 20vh;
-  width: 15vw;
+
+.steps img {
+  width: 8vw;
+  height: 16vh;
+}
+
+.step1,
+.step2,
+.step3 {
+  width: 20vw;
   font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.BuiltResume{
+  text-align: center;
+  margin-bottom: 5vh;
+}
+.footer{
+  height: 15vh;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
