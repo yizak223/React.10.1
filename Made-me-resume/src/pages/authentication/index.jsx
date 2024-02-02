@@ -1,14 +1,15 @@
 import LogIn from "../../component/authentication/logIn";
 import SignUp from "../../component/authentication/signUp";
-import React,{useContext} from 'react'
+import Footer from "../../component/Fotter";
+import React, { useContext } from 'react'
 import { useState } from "react";
-import {UserContext} from '../../context/User'
+import { UserContext } from '../../context/User'
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../component/navBar";
 
-export default function Authentication({path, setPath}) {
+export default function Authentication({ path, setPath }) {
     const navigate = useNavigate();
-    const { register, login}=useContext(UserContext)
+    const { register, login } = useContext(UserContext)
     const [formDatasSignUp, setFormDatasSignUp] = useState([])
     const [formDatasLogIn, setFormDatasLogIn] = useState([])
     const [formDataSignUp, setFormDataSignUp] = useState({})
@@ -30,39 +31,41 @@ export default function Authentication({path, setPath}) {
         console.log(formDataSignUp)
         setFormDatasSignUp([...formDatasSignUp, { ...formDataSignUp }])
         register(formDataSignUp.email, formDataSignUp.password1)
-        navigate('/MadeMeResume'); 
+        navigate('/MadeMeResume');
     }
     const submitFormLogIn = (e) => {
         e.preventDefault()
         console.log(formDataLogIn)
         setFormDatasLogIn([...formDatasLogIn, { ...formDataLogIn }])
         login(formDataLogIn.email, formDataLogIn.password)
-        navigate('/MadeMeResume'); 
+        navigate('/MadeMeResume');
     }
     return (
         <>
-        {/* <NavBar path={path} setPath={setPath} /> */}
-        <div className="containerAuth">
-            {logOrSign ?
-                <div className="signUpDiv">
-                   <SignUp 
-                    handleInputChangeRegister={handleInputChangeRegister}
-                    submitFormRegister={submitFormRegister}
-                   />
-                    <p>Have an acconout?</p>
-            <p className="lgin-signup" onClick={() => setlogOrSign(!logOrSign)}>Log in</p>
-                </div>
-                :
-                <div className="logInDiv">
-                     <LogIn
-                     handleInputChangeLogIn={handleInputChangeLogIn}
-                     submitFormLogIn={submitFormLogIn}
-                     />
-                    <p>Don't have acconout? </p>
-            <p className="lgin-signup" onClick={() => setlogOrSign(!logOrSign)}>Sign up</p>
-                </div>
-            }
-        </div>
+            {/* <NavBar path={path} setPath={setPath} /> */}
+            <div className="containerAuth">
+                {logOrSign ?
+                    <div className="signUpDiv">
+                        <SignUp
+                            handleInputChangeRegister={handleInputChangeRegister}
+                            submitFormRegister={submitFormRegister}
+                        />
+                        <p>Have an acconout?</p>
+                        <p className="lgin-signup" onClick={() => setlogOrSign(!logOrSign)}>Log in</p>
+                    </div>
+                    :
+                    <div className="logInDiv">
+                        <LogIn
+                            handleInputChangeLogIn={handleInputChangeLogIn}
+                            submitFormLogIn={submitFormLogIn}
+                        />
+                        <p>Don't have acconout? </p>
+                        <p className="lgin-signup" onClick={() => setlogOrSign(!logOrSign)}>Sign up</p>
+                    </div>
+                }
+
+            </div>
+            <Footer />
         </>
     )
 }

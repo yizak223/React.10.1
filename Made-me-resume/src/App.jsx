@@ -6,6 +6,7 @@ import Home from './pages/home'
 import MadeMeResume from './pages/madeResume'
 import Authentication from './pages/authentication'
 import UserResume from './pages/userResume'
+import TemplateContainer from './pages/TemplatePage'
 import BigResume from './component/savedResumes/BigResume'
 import { useContext } from "react";
 import { UserContext } from "../src/context/User";
@@ -26,6 +27,7 @@ function App() {
               <MadeMeResume />
             </FormDataProvider>
           } />
+          <Route path='/MadeMeResume/:TemplateId' element={<TemplateContainer/>}/>
           <Route path='/UserResume' element={<UserResume />} />
           <Route  path='/UserResume/:ResumeId' element={<BigResume setPath={setPath}/>} />
           {!user ? <Route path="/Authentication" element={

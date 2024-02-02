@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useContext } from 'react';
 import { UserContext } from '../../context/User';
+import Footer from "../../component/Fotter";
 import { onAuthStateChanged } from "firebase/auth";
 import { addDoc, collection, onSnapshot, doc, deleteDoc, query, getDocs, where, serverTimestamp, orderBy, updateDoc } from "firebase/firestore";
 import { dB, auth } from '../../config/firebaseConfig';
@@ -19,7 +20,7 @@ export default function UserResume() {
           const qUser = query(collectionRef, where("userId", "==", user.uid));
 
           const unsub = onSnapshot((qUser), (snapshot) =>
-          setUserResumeData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))))
+            setUserResumeData(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))))
           return unsub
 
           // const snapshot = await getDocs(qUser);
@@ -37,17 +38,20 @@ export default function UserResume() {
 
 
   return (
-    <div className="containerResume">
-      {
-        userResumeData?.map((res, index) => {
-          return (
-            <div key={index}>
-              <SmallCardResume res={res} />
-            </div>
-          )
-        })
-      }
-    </div>
+    <>
+      <div className="containerResume">
+        {
+          userResumeData?.map((res, index) => {
+            return (
+              <div key={index}>
+                <SmallCardResume res={res} />
+              </div>
+            )
+          })
+        }
+      </div>
+        <Footer></Footer>
+    </>
 
   )
 }

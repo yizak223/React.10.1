@@ -103,6 +103,7 @@ body {
   border-radius: 5px;
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
 }
 
 .radio-options {
@@ -116,12 +117,13 @@ body {
 
 .form-container {
   max-width: 40vw;
-  margin: 0 auto;
+  margin: 5vh auto;
   padding: 20px;
   border: 1px solid #ccc;
   background-color: white;
   border-radius: 5px;
   margin-top: 10px;
+  height: 76vh;
 }
 
 .form-input,
@@ -229,7 +231,9 @@ body {
   text-decoration: underline;
 }
 
-.containerAuth {}
+.containerAuth {
+  height: 76vh;
+}
 
 .logInDiv,
 .signUpDiv {
@@ -359,6 +363,7 @@ body {
   flex-direction: row;
   gap: 15px;
   justify-content: center;
+  height: 76vh;
 }
 
 .resumeCard,
@@ -722,6 +727,8 @@ iframe {
   margin-bottom: 5vh;
 }
 .footer{
+  background-color: #000;
+  color: #ffffff;
   height: 15vh;
   font-size: 26px;
   display: flex;
