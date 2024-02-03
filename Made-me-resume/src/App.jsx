@@ -10,6 +10,7 @@ import TemplateContainer from './pages/TemplatePage'
 import BigResume from './component/savedResumes/BigResume'
 import { useContext } from "react";
 import { UserContext } from "../src/context/User";
+import ExampleResProvider from './context/ExampleRes'
 import { FormDataProvider } from './context/FormData'
 
 function App() {
@@ -21,10 +22,14 @@ function App() {
       <BrowserRouter>
         <NavBar path={path} setPath={setPath} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={
+              <Home />
+          } />
           <Route path="/MadeMeResume" element={
             <FormDataProvider>
-              <MadeMeResume />
+              <ExampleResProvider>
+                <MadeMeResume />
+              </ExampleResProvider>
             </FormDataProvider>
           } />
           <Route path='/MadeMeResume/:TemplateId' element={<TemplateContainer/>}/>

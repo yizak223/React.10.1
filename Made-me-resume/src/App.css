@@ -98,14 +98,64 @@ body {
 }
 
 .form-container {
-  max-width: 50vw;
+  /* max-width: 50vw; */
   padding: 20px;
   border-radius: 5px;
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  
+  width: 40vw;
+  margin: 5vh auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+  height: 76vh;
+
 }
 
+.forTemplate {
+  margin: 0;
+  padding: 0;
+  width: 99.9%;
+}
+
+.titlesContainer {
+  background-color: #ffffff;
+  text-align: center;
+  padding: 25px;
+    border-bottom: solid #3e3c3c;
+}
+.mainTtileTemplate {
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 600;
+  color: rgb(30, 32, 33);
+}
+
+.secondtitleTemplate {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  color: rgb(150, 155, 158);
+}
+.containerTemplate{
+  background-color: rgb(248, 249, 250);
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.containerTemplateSingle{
+  background-color: rgb(248, 249, 250);
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  border-radius: 8px;
+}
 .radio-options {
   display: flex;
   gap: 10px;
@@ -115,16 +165,7 @@ body {
   margin-top: 10px;
 }
 
-.form-container {
-  max-width: 40vw;
-  margin: 5vh auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  background-color: white;
-  border-radius: 5px;
-  margin-top: 10px;
-  height: 76vh;
-}
+
 
 .form-input,
 .form-textarea,
@@ -380,7 +421,8 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: 0.5s;
 }
-.resumeCard{
+
+.resumeCard {
   opacity: 50%;
 }
 
@@ -722,11 +764,13 @@ iframe {
   align-items: center;
   text-align: center;
 }
-.BuiltResume{
+
+.BuiltResume {
   text-align: center;
   margin-bottom: 5vh;
 }
-.footer{
+
+.footer {
   background-color: #000;
   color: #ffffff;
   height: 15vh;

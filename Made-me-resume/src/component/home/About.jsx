@@ -11,10 +11,10 @@ export default function About() {
     <>
       <div className='containerPageAbout'>
         <div className='containerHero'>
-          <div> <section class="hero">
-            <div class="intro-text">
+          <div> <section className="hero">
+            <div className="intro-text">
               <h1>
-                <span class="hear"> Create your winning resume in just 10 minutes </span> <br />
+                <span className="hear"> Create your winning resume in just 10 minutes </span> <br />
               </h1>
               <ul className='listOptions'>
                 <li>
@@ -28,20 +28,20 @@ export default function About() {
                   Advice of professionals to <strong>get hired faster!</strong>
                 </li>
               </ul>
-              <p class="btn red" href="#">CHOOSE A TEMPLATE</p>
+              <p className="btn red" href="#">CHOOSE A TEMPLATE</p>
 
             </div>
-            <div class="i-frame">
+            <div className="i-frame">
               <iframe
                 width="560"
                 height="315"
                 src="https://www.youtube.com/embed/u75hUSShvnc"
                 title="YouTube video player"
-                frameborder="10"
+                frameBorder="10"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               ></iframe>
-              <div class="stand-1"></div>
-              <div class="stand-2"></div>
+              <div className="stand-1"></div>
+              <div className="stand-2"></div>
             </div>
           </section></div>
         </div>
@@ -65,7 +65,7 @@ export default function About() {
           </div>
         </div>
         <div className='BuiltResume'>
-          <p onClick={goForm} class="btn red " href="#">BUILT MY RESUME</p>
+          <p onClick={goForm} className="btn red " href="#">BUILT MY RESUME</p>
         </div>
       </div>
     <Footer/>

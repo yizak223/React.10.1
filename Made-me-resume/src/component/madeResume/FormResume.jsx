@@ -3,6 +3,7 @@ import Education from './Education';
 import WorkExperince from './WorkExperince';
 import PrivateDetails from './PrivateDetails';
 import MessageSent from './MessageSent';
+import TemplateContainer from '../../pages/TemplatePage';
 import ConnectFirst from './connectFirst';
 import { useContext } from 'react';
 import { UserContext } from '../../context/User';
@@ -18,7 +19,6 @@ export default function FormResume() {
   const [counter, setCounter] = useState(0)
   const [counter2, setCounter2] = useState(0)
   const [previewMode, setPreviewMode] = useState(false)
-
 
   const handleInputChange = (e) => {
     formData[e.target.name] = e.target.value
@@ -36,8 +36,14 @@ export default function FormResume() {
   const renderCurrentStep = () => {
     switch (counter) {
       case 0:
-        return <PrivateDetails handleInputChange={handleInputChange} />;
+        return <TemplateContainer/>
       case 1:
+        return <PrivateDetails handleInputChange={handleInputChange} />;
+      case 2:
+        return <Education
+          handleInputChange={handleInputChange}
+        />;
+      case 3:
         return (
           <WorkExperince
             selectedOption={selectedOption}
@@ -45,12 +51,10 @@ export default function FormResume() {
             handleOptionChange={handleOptionChange}
           />
         );
-      case 2:
-        return <Education
-          handleInputChange={handleInputChange}
-        />;
-      case 3:
+      case 4:
         return <MessageSent />;
+      case 5:
+        return <ConnectFirst handleInputChange={handleInputChange} />
       default:
         return null;
     }
@@ -68,7 +72,7 @@ export default function FormResume() {
       const docRef = await addDoc(collectionRef, formData)
       formData.id = docRef.id
     }
-    else{
+    else {
       setPreviewMode(true)
     }
   };
@@ -76,29 +80,29 @@ export default function FormResume() {
   return (
     <>
       {!previewMode ?
-      <div className="form-container">
-        <form onSubmit={handleSubmit}>
-          {renderCurrentStep()}
-          {0 < counter && counter < 3 ?
-            <button type='button' className="form-btn" onClick={() => setCounter(counter - 1)}>
-              Previos
-            </button>
-            : null
-          }
-          {counter < 2 ? (
-            <p className="form-btn pBtn" onClick={() => setCounter(counter + 1)}>
-              Next
-            </p>
-          ) : (
-            counter2 == 0 ?
-              <>
-                <button className='form-btn submitBtn' type='submit'>Make your resume</button>
-              </>
+        <div className={`form-container ${counter==0?' forTemplate':''}`}>
+          <form onSubmit={handleSubmit}>
+            {renderCurrentStep()}
+            {0 < counter && counter < 3 ?
+              <button type='button' className="form-btn" onClick={() => setCounter(counter - 1)}>
+                Previos
+              </button>
               : null
-          )}
-        </form>
-      </div>
-       : <ConnectFirst />} 
+            }
+            {counter < 3 ? (
+              <p className="form-btn pBtn" onClick={() => setCounter(counter + 1)}>
+                Next
+              </p>
+            ) : (
+              counter2 == 0 ?
+                <>
+                  <button className='form-btn submitBtn' type='submit'>Make your resume</button>
+                </>
+                : null
+            )}
+          </form>
+        </div>
+        : <ConnectFirst />}
     </>
   )
 }
