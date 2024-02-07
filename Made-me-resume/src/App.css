@@ -499,7 +499,6 @@ h4 {
 
 .smallCard,
 .smallCardRealy {
-  background-color: #f8f9fa;
   border: 1px solid #ccc;
   border-radius: 8px;
   margin-bottom: 10px;
@@ -511,11 +510,9 @@ h4 {
   padding: 3px;
 }
 
-/*  */
 .smallCardJobs {
   padding: 20px 3px 20px 0;
   margin-bottom: 10px;
-  background-color: #f8f9fa;
   border: 1px solid #ccc;
   border-radius: 8px;
 }
