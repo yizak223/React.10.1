@@ -2,9 +2,10 @@
     font-size: 5px;
     color: #aeafb0;
     background-color: rgb(255, 255, 255);
-    width: 20vw;
-    height: 40vh;
-    margin: 0 ;
+    height: 65vh;
+    width: 25vw;
+    box-sizing: border-box;
+    margin-top: 0 ;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;

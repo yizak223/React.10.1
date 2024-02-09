@@ -1,6 +1,7 @@
 import React,{useContext, useEffect, useState} from 'react'
 import SmallCardResume from '../savedResumes/SmallCardResume'
 import { ExampleResContext } from "../../context/ExampleRes";
+import './template1.css'
 
 
 export default function Template1() {
@@ -57,7 +58,7 @@ export default function Template1() {
     <>
       <div className='containerTemplateSingle'>
         <>
-        <div  className="resumeCard">
+        <div  className="resumeCard template1">
       <div className='containerFirstPargraph'>
         <div className='firstPargraph'>
           <p className='blackTitle roleTitle'>{res.jobs[0].Role}</p>
