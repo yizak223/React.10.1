@@ -73,12 +73,15 @@
     flex-direction: column;
     gap: 0.5rem;
 }
-.roleTitle{
+
+.roleTitle {
     font-size: 0.8rem;
 }
-.restDetails{
+
+.restDetails {
     font-size: 0.4rem;
 }
+
 .detailsContactInfo {
     display: flex;
     gap: 5vw;
@@ -91,21 +94,65 @@
 .NameTemplate2 h1 {
     font-size: 20px;
 }
-.skillsContainer{
+
+.skillsContainer {
     font-family: Roboto, sans-serif;
     font-weight: 700;
     font-size: 7px;
     height: 20%;
 }
-.languageContainer{
+
+.languageContainer {
     height: 20%;
     font-family: Roboto, sans-serif;
     font-weight: 700;
     font-size: 7px;
 
 }
-.TitleRestResume{
-    text-decoration:solid 2px black;
+
+.TitleRestResume {
+    text-decoration: solid 2px black;
     text-align: center;
     margin-bottom: 1vh;
+}
+
+.TitleRestResumeRightSide {
+    font-size: 1rem;
+}
+
+.containerExperince {
+    font-size: 0.5rem;
+    margin: 1vh 0 1vh 0;
+    color: rgb(0, 0, 0);
+}
+
+.descriptionExperince {
+    color: rgb(177, 181, 184);
+}
+
+.containerDetailsExperince {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contentEducation {
+    margin: 1vh 0 1vh 0;
+    font-size: 0.5rem;
+    color: black;
+}
+
+.contentEducationDegree {
+    font-size: 0.5rem;
+}
+
+.containerEducation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    line-height: 0.5;
+    margin: 1vh 0 1vh 0;
+}
+
+.dateContainer {
+    font-size: 500;
 }

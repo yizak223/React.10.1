@@ -26,34 +26,44 @@ export default function Template1() {
       <p className="cardContent cardContentReally">{content}</p>
     </div>
   );
-  const res ={
+  const res = {
     jobs: [{
-        Role: 'Developer',
-        CompanyName: 'Google',
-        Description: `
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Vero nostrum itaque fugit. Laborum mollitia 
-                fugiat nesciunt illum 
-                fugit iure culpa harum. Quasi nemo quis eum 
-                blanditiis earum delectus suscipit voluptates.`,
-        startDate: '2021-01-01',
-        endtDate: '2021-01-01',
+      Role: "Software Engineer",
+      CompanyName: "Microsoft",
+      Description: "Responsible for developing scalable backend services for Azure cloud platform. Collaborated with cross-functional teams to design and implement features that enhance performance and reliability. Contributed to the development of internal tools for monitoring and debugging cloud services.",
+      startDate: "2019-03-15",
+      endDate: "2023-07-31"
+    }, {
+      Role: "Data Scientist",
+      CompanyName: "Facebook",
+      Description: "As a data scientist at Facebook, I worked on analyzing user engagement patterns and developing algorithms for personalized content recommendations. Utilized machine learning techniques to optimize ad targeting strategies and improve user experience.",
+      startDat: "2020-06-15",
+      endDate: "2022-12-31"
     }],
     Education: [{
-        Degree: 'Bachelor',
-        School: 'Ben-Gurion',
-        startDate: '2021-01-01',
-        endtDate: '2021-01-01',
+      Degree: "Bachelor's in Mathematics",
+      School: "Stanford University",
+      startDate: "2016-09-01",
+      endDate: "2020-06-30"
+    }, {
+      Degree: "Bachelor's in Mechanical Engineering",
+      School: "Massachusetts Institute of Technology (MIT)",
+      startDate: "2017-10-01",
+      endDate: "2021-07-15"
+    }, {
+      Degree: "Bachelor's in Psychology",
+      School: "Harvard University",
+      startDate: "2018-01-01",
+      endDate: "2021-12-31"
     }],
-    AboutMe: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Vero nostrum itaque fugit. Laborum mollitia 
-            fugiat nesciunt illum 
-            fugit iure culpa harum. Quasi nemo quis eum 
-            blanditiis earum delectus suscipit voluptates.`,
+    AboutMe: `I'm a software engineer experienced in building scalable backend solutions. 
+              With a background at Google, I focus on innovative technologies to enhance user experiences. 
+              Collaborative by nature,
+              I strive to deliver high-quality solutions.`,
     Phone: '0123456789',
     Email: 'example@example.com',
     FullName: 'Lorem Ipsum',
-}
+  }
   return (
     <>
       <div className='containerTemplateSingle'>

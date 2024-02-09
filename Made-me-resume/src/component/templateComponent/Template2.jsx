@@ -1,44 +1,75 @@
 import React from 'react'
 import './template2.css'
 export default function Template2() {
-  const SmallCardEducation = ({ title, content, descriprion, date }) => (
-    <div className="smallCardRealy">
-      <p className="cardTitle">{title}</p>
-      <p className="cardContent">{content}</p>
-      <p className='date'>{date}</p>
-      <p className='cardDescription'>{descriprion}</p>
+
+  function formatDate(inputDate) {
+    const options = { year: 'numeric', month: 'short' };
+    return new Date(inputDate).toLocaleDateString('en-US', options);
+  }
+
+  const SmallCardExperince = ({ title, content, descriprion, date }) => (
+    <div className="containerExperince">
+      <div className='containerDetailsExperince'>
+        <div>
+          <p className="">{title} | {content}</p>
+        </div>
+        <div>
+          <p className=''>{date}</p>
+        </div>
+      </div>
+      <div>
+        <p className='descriptionExperince'>{descriprion}</p>
+      </div>
     </div>
   );
-  const SmallCardJobs = ({ title, content }) => (
-    <div className="smallCardJobs smallCardJobsReally">
-      <p className="cardTitle">{title}</p>
-      <p className="cardContent cardContentReally">{content}</p>
+
+  const SmallCardEducation = ({ title, content, school }) => (
+    <div className="containerEducation">
+      <div>
+        <p className="contentEducationDegree">{title}</p>
+        <p className="contentEducation">{school}</p>
+      </div>
+      <div>
+        <p className="contentEducation dateContainer">{content}</p>
+      </div>
+
     </div>
   );
+
   const res = {
     jobs: [{
-      Role: 'Developer',
-      CompanyName: 'Google',
-      Description: `
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Vero nostrum itaque fugit. Laborum mollitia 
-                fugiat nesciunt illum 
-                fugit iure culpa harum. Quasi nemo quis eum 
-                blanditiis earum delectus suscipit voluptates.`,
-      startDate: '2021-01-01',
-      endtDate: '2021-01-01',
+      Role: "Software Engineer",
+      CompanyName: "Microsoft",
+      Description: "Responsible for developing scalable backend services for Azure cloud platform. Collaborated with cross-functional teams to design and implement features that enhance performance and reliability. Contributed to the development of internal tools for monitoring and debugging cloud services.",
+      startDate: "2019-03-15",
+      endDate: "2023-07-31"
+    }, {
+      Role: "Data Scientist",
+      CompanyName: "Facebook",
+      Description: "As a data scientist at Facebook, I worked on analyzing user engagement patterns and developing algorithms for personalized content recommendations. Utilized machine learning techniques to optimize ad targeting strategies and improve user experience.",
+      startDat: "2020-06-15",
+      endDate: "2022-12-31"
     }],
     Education: [{
-      Degree: 'Bachelor',
-      School: 'Ben-Gurion',
-      startDate: '2021-01-01',
-      endtDate: '2021-01-01',
+      Degree: "Bachelor's in Mathematics",
+      School: "Stanford University",
+      startDate: "2016-09-01",
+      endDate: "2020-06-30"
+    }, {
+      Degree: "Bachelor's in Mechanical Engineering",
+      School: "Massachusetts Institute of Technology (MIT)",
+      startDate: "2017-10-01",
+      endDate: "2021-07-15"
+    }, {
+      Degree: "Bachelor's in Psychology",
+      School: "Harvard University",
+      startDate: "2018-01-01",
+      endDate: "2021-12-31"
     }],
-    AboutMe: `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Vero nostrum itaque fugit. Laborum mollitia 
-            fugiat nesciunt illum 
-            fugit iure culpa harum. Quasi nemo quis eum 
-            blanditiis earum delectus suscipit voluptates.`,
+    AboutMe: `I'm a software engineer experienced in building scalable backend solutions. 
+              With a background at Google, I focus on innovative technologies to enhance user experiences. 
+              Collaborative by nature,
+              I strive to deliver high-quality solutions.`,
     Phone: '0123456789',
     Email: 'example@example.com',
     FullName: 'Lorem Ipsum',
@@ -55,11 +86,11 @@ export default function Template2() {
           </div>
           <div className='skillsContainer'>
             <h2 className='TitleRestResume'>Skills</h2>
-            <p>skill1</p>
-            <p>skill1</p>
-            <p>skill1</p>
-            <p>skill1</p>
-            <p>skill1</p>
+            <p>Project Management</p>
+            <p>Data Analysis</p>
+            <p>Team Leadership</p>
+            <p>Customer Relationship Management</p>
+            <p>Problem Solving</p>
           </div>
           <div className='languageContainer'>
             <h2 className='TitleRestResume'>Languages</h2>
@@ -88,25 +119,26 @@ export default function Template2() {
         </div>
         <div className='restRusume'>
           <div className='ExperienceContainer'>
-            <h2 className='TitleRestResume'>Experience</h2>
+            <h2 className='TitleRestResumeRightSide'>Experience</h2>
             {res.jobs.map((element, index) => (
-            <SmallCardEducation key={index}
-              title={element.Role}
-              content={`${element.CompanyName}`}
-              date={`${element.startDate} - ${element.endtDate}`}
-              descriprion={`${element.Description}`}
-            />
-          ))}
+              <SmallCardExperince key={index}
+                title={element.Role}
+                content={`${element.CompanyName}`}
+                date={`${formatDate(element.startDate)} - ${formatDate(element.endtDate)}`}
+                descriprion={`${element.Description}`}
+              />
+            ))}
           </div>
           <div className='EducationContainer'>
-            <h2 className='TitleRestResume'>Education</h2>
+            <h2 className='TitleRestResumeRightSide'>Education</h2>
             {res.Education.map((element, index) => (
-            <SmallCardJobs
-              key={index}
-              title={`${element.Degree} at ${element.School}`}
-              content={`${element.startDate} - ${element.endtDate}`}
-            />
-          ))}
+              <SmallCardEducation
+                key={index}
+                title={element.Degree}
+                school={element.School}
+                content={`${formatDate(element.startDate)} - ${formatDate(element.endtDate)}`}
+              />
+            ))}
           </div>
         </div>
       </div>

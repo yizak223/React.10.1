@@ -9,6 +9,7 @@ import { useContext } from 'react';
 import { UserContext } from '../../context/User';
 import { useFormData } from '../../context/FormData';
 import { dB } from '../../config/firebaseConfig';
+import './formResume.css'
 import { addDoc, collection, onSnapshot, doc, deleteDoc, query, getDocs, where, serverTimestamp, orderBy, updateDoc } from "firebase/firestore";
 
 
@@ -36,7 +37,7 @@ export default function FormResume() {
   const renderCurrentStep = () => {
     switch (counter) {
       case 0:
-        return <TemplateContainer/>
+        return <TemplateContainer setCounter={setCounter} counter={counter} />
       case 1:
         return <PrivateDetails handleInputChange={handleInputChange} />;
       case 2:
@@ -76,12 +77,15 @@ export default function FormResume() {
       setPreviewMode(true)
     }
   };
-
+  if (counter == 3) {
+    setCounter2(1)
+  }
+  console.log(counter2);
   return (
     <>
       {!previewMode ?
-        <div className={`form-container ${counter==0?' forTemplate':''}`}>
-          <form onSubmit={handleSubmit}>
+        <div className={`form-container ${counter == 0 ? ' forTemplate' : ''}`}>
+          <form className='formResume' onSubmit={handleSubmit}>
             {renderCurrentStep()}
             {0 < counter && counter < 3 ?
               <button type='button' className="form-btn" onClick={() => setCounter(counter - 1)}>
@@ -90,9 +94,11 @@ export default function FormResume() {
               : null
             }
             {counter < 3 ? (
-              <p className="form-btn pBtn" onClick={() => setCounter(counter + 1)}>
-                Next
-              </p>
+              // <div>
+                <p className="form-btn pBtn" onClick={() => setCounter(counter + 1)}>
+                  Next
+                </p>
+              // </div>
             ) : (
               counter2 == 0 ?
                 <>
