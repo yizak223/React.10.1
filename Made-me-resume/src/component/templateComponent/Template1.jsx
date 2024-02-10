@@ -1,4 +1,4 @@
-import React,{useContext, useEffect, useState} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SmallCardResume from '../savedResumes/SmallCardResume'
 import { ExampleResContext } from "../../context/ExampleRes";
 import './template1.css'
@@ -15,8 +15,11 @@ export default function Template1() {
   const SmallCardEducation = ({ title, content, descriprion, date }) => (
     <div className="smallCardRealy">
       <p className="cardTitle">{title}</p>
-      <p className="cardContent">{content}</p>
-      <p className='date'>{date}</p>
+      <div className='dateContent'>
+        <p className="cardContent">{content}</p>
+        <p className='date'>{date}</p>
+      </div>
+
       <p className='cardDescription'>{descriprion}</p>
     </div>
   );
@@ -37,7 +40,7 @@ export default function Template1() {
       Role: "Data Scientist",
       CompanyName: "Facebook",
       Description: "As a data scientist at Facebook, I worked on analyzing user engagement patterns and developing algorithms for personalized content recommendations. Utilized machine learning techniques to optimize ad targeting strategies and improve user experience.",
-      startDat: "2020-06-15",
+      startDate: "2020-06-15",
       endDate: "2022-12-31"
     }],
     Education: [{
@@ -68,48 +71,48 @@ export default function Template1() {
     <>
       <div className='containerTemplateSingle'>
         <>
-        <div  className="resumeCard template1">
-      <div className='containerFirstPargraph'>
-        <div className='firstPargraph'>
-          <p className='blackTitle roleTitle'>{res.jobs[0].Role}</p>
-          <p className='blackTitle nameTitle'>{res.FullName}</p>
-        </div>
-        <div className='contactDetails blackTitle'>
-          <p>{res.Phone}</p>
-          <p>{res.Email}</p>
-        </div>
-      </div>
-      <div className="smallCardRealy blackTitle">
-        <p>{res.AboutMe}</p>
-      </div>
-      <ul>
-        <div className='educationDetails'>
-          <li className='blackTitle'>Education</li>
-          {res.Education.map((element, index) => (
-            <SmallCardJobs
-              key={index}
-              title={`${element.Degree} at ${element.School}`}
-              content={`${element.startDate} - ${element.endtDate}`}
-            />
-          ))}
-        </div>
-        <div className='jobsDetails'>
-          <li className='blackTitle'>Jobs</li>
-          {res.jobs.map((element, index) => (
-            <SmallCardEducation key={index}
-              title={element.Role}
-              content={`${element.CompanyName}`}
-              date={`${element.startDate} - ${element.endtDate}`}
-              descriprion={`${element.Description}`}
-            />
-          ))}
-        </div>
-      </ul>
+          <div className="resumeCard template1">
+            <div className='containerFirstPargraph'>
+              <div className='firstPargraph'>
+                <p className='blackTitle roleTitle'>{res.jobs[0].Role}</p>
+                <p className='blackTitle nameTitle'>{res.FullName}</p>
+              </div>
+              <div className='contactDetails blackTitle'>
+                <p>{res.Phone}</p>
+                <p>{res.Email}</p>
+              </div>
+            </div>
+            <div className="smallCardRealy blackTitle">
+              <p>{res.AboutMe}</p>
+            </div>
+            <ul>
+              <div className='educationDetails'>
+                <li className='blackTitle'>Education</li>
+                {res.Education.map((element, index) => (
+                  <SmallCardJobs
+                    key={index}
+                    title={`${element.Degree} at ${element.School}`}
+                    content={`${element.startDate} - ${element.endDate}`}
+                  />
+                ))}
+              </div>
+              <div className='jobsDetails'>
+                <li className='blackTitle'>Jobs</li>
+                {res.jobs.map((element, index) => (
+                  <SmallCardEducation key={index}
+                    title={element.Role}
+                    content={`${element.CompanyName}`}
+                    date={`${element.startDate} - ${element.endDate}`}
+                    descriprion={`${element.Description}`}
+                  />
+                ))}
+              </div>
+            </ul>
 
-    </div>
+          </div>
 
-    
-    </>
+
+        </>
       </div>
     </>
 

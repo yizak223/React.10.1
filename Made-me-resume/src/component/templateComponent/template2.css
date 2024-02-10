@@ -1,12 +1,9 @@
 .template2 {
-    /* font-size: 5px; */
     color: #aeafb0;
-    background-color: rgb(255, 255, 255);
     height: 65vh;
     width: 25vw;
     box-sizing: border-box;
     margin: 10px;
-    /* padding: 20px; */
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

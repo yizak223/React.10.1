@@ -402,13 +402,14 @@ body {
 
 .resumeCard,
 .resumeCardBig {
-  font-size: 5px;
-  color: #aeafb0;
   background-color: rgb(255, 255, 255);
-  width: 20vw;
-  height: 40vh;
-  margin: 0 auto;
+  font-size: 10px;
   padding: 20px;
+  color: #aeafb0;
+  height: 65vh;
+  width: 25vw;
+  box-sizing: border-box;
+  margin: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -416,7 +417,7 @@ body {
 }
 
 .resumeCard {
-  opacity: 50%;
+  /* opacity: 50%; */
 }
 
 .resumeCardBig {
@@ -492,8 +493,7 @@ h4 {
 
 .smallCard,
 .smallCardRealy {
-  border: 1px solid #ccc;
-  border-radius: 8px;
+
   margin-bottom: 10px;
   padding: 20px 3px 20px 0;
 }
@@ -506,8 +506,6 @@ h4 {
 .smallCardJobs {
   padding: 20px 3px 20px 0;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
 }
 
 .smallCardJobsReally {
@@ -525,6 +523,7 @@ h4 {
 
 .cardTitle {
   color: #524e4e;
+  font-weight: 800;
 }
 
 .cardContent {

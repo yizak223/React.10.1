@@ -28,7 +28,7 @@ export default function About() {
                   Advice of professionals to <strong>get hired faster!</strong>
                 </li>
               </ul>
-              <p className="btn red" href="#">CHOOSE A TEMPLATE</p>
+              <p onClick={goForm} className="btn red" href="#">CHOOSE A TEMPLATE</p>
 
             </div>
             <div className="i-frame">
