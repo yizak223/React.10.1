@@ -139,15 +139,7 @@ body {
   font-weight: 500;
   color: rgb(150, 155, 158);
 }
-.containerTemplate{
-  background-color: rgb(248, 249, 250);
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  align-items: center;
-  height: 80;
-}
+
 .containerTemplateSingle{
   background-color: rgb(248, 249, 250);
   display: flex;

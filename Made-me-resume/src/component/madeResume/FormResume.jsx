@@ -77,9 +77,9 @@ export default function FormResume() {
       setPreviewMode(true)
     }
   };
-  if (counter == 3) {
-    setCounter2(1)
-  }
+  // if (counter == 3) {
+  //   setCounter2(1)
+  // }
   console.log(counter2);
   return (
     <>
@@ -87,25 +87,29 @@ export default function FormResume() {
         <div className={`form-container ${counter == 0 ? ' forTemplate' : ''}`}>
           <form className='formResume' onSubmit={handleSubmit}>
             {renderCurrentStep()}
-            {0 < counter && counter < 3 ?
-              <button type='button' className="form-btn" onClick={() => setCounter(counter - 1)}>
-                Previos
-              </button>
-              : null
-            }
-            {counter < 3 ? (
-              // <div>
+            <div className='containerSentBtn'>
+              {0 < counter && counter < 4 ?
+                <button type='button' className="form-btn" onClick={() => setCounter(counter - 1)}>
+                  Previos
+                </button>
+                : null
+              }
+              {0 < counter && counter < 3 ? 
+                // <div>
                 <p className="form-btn pBtn" onClick={() => setCounter(counter + 1)}>
                   Next
                 </p>
-              // </div>
-            ) : (
-              counter2 == 0 ?
-                <>
-                  <button className='form-btn submitBtn' type='submit'>Make your resume</button>
-                </>
-                : null
-            )}
+                // </div>
+              : null} 
+              {
+               counter == 3  && counter2 == 0 ?
+                  <>
+                    <button className='form-btn submitBtn' type='submit'>Make your resume</button>
+                  </>
+                  : null
+              }
+            </div>
+
           </form>
         </div>
         : <ConnectFirst />}
