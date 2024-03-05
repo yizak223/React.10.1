@@ -1,0 +1,18 @@
+.noResume h3{
+    margin-top: 1rem;
+    color: black;
+}
+.img{
+    height: 60vh;
+}
+@media only screen and (max-width: 768px){
+    .noResume{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .img{
+        height: 40vh;
+    }
+}

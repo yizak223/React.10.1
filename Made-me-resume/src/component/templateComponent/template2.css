@@ -74,7 +74,11 @@
 .roleTitle {
     font-size: 0.8rem;
 }
-
+@media only screen and (max-width: 768px){
+    .roleTitle{
+        font-size: 10px;
+    }
+  }
 .restDetails {
     font-size: 0.4rem;
 }

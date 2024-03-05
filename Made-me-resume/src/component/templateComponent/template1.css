@@ -8,3 +8,32 @@
     justify-content: space-between;
     margin: 0.2rem 0 0.2rem 0;
 }
+@media only screen and (max-width: 768px){
+    .template1{
+        width: 85vw;
+        min-height: 40vh;
+        height: fit-content;
+    }
+    .contactDetails{
+        font-size: 6px;
+        margin-top: 4px;
+    }
+    .nameTitle{
+        font-size: 7px;
+    }
+    .containerFirstPargraph{
+        margin-bottom: 1px;
+    }
+    .blackTitle{
+        font-size: 9px;
+    }
+    .contactDetails{
+        font-size: 8px;
+    }
+    .cardTitle{
+        font-size: 9px;
+    }
+    .cardContent{
+        font-size: 7px;
+    }
+  }

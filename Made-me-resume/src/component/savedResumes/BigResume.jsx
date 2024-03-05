@@ -5,6 +5,7 @@ import { addDoc, collection, onSnapshot, doc, deleteDoc, query, getDoc, where, s
 import { dB, auth } from '../../config/firebaseConfig';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import styles from './bigResume.module.css'
 
 
 import { useContext } from 'react';
@@ -12,14 +13,18 @@ import { useFormData } from '../../context/FormData';
 
 const SmallCardEducation = ({ title, content, descriprion, date }) => (
   <div className="smallCard">
-    <p className="cardTitle">{title}</p>
-    <p className="cardContent">{content} | <span className='date'>{date}</span></p>
-    <p className='cardDescription'>{descriprion}</p>
+    <div>
+      <p className={`${styles.cardTitle} ${styles.role}`}>{title}</p>
+      <p className="cardContent">{content}  </p>
+      <p className='cardDescription'>{!descriprion ? descriprion : null}</p>
+    </div>
+    <p className='date'>{date}</p>
   </div>
 );
 const SmallCardJobs = ({ title, content }) => (
-  <div className="smallCardJobs">
-    <p className="cardTitle">{title} | <span className="cardContent"> {content}</span></p>
+  <div className={styles.smallCardJobs}>
+    <p className={styles.cardTitle}>{title}  </p>
+    <p className="cardContent"> {content}</p>
   </div>
 );
 
@@ -73,25 +78,25 @@ export default function BigResume({ setPath }) {
   return (
     <>{
       resumeData ? <div className='containerAllPage'>
-        <div className="resumeCardBig">
+        <div className={styles.resumeDoc}>
           <div className='containerFirstPargraph'>
             <div className='firstPargraph'>
-              <p className='roleTitlebig'>{resumeData.jobs[0].Role.toUpperCase()}</p>
-              <p className='nameTitleBig'>{resumeData.FullName}</p>
+              <p className='roleTitlebig'>{resumeData.jobs[0]?.Role?.toUpperCase()}</p>
+              <p className={styles.nameTitleBig}>{resumeData.FullName}</p>
             </div>
-            <div className='contactDetails blackTitle'>
+            <div className={styles.contactDetails}>
               <p>{resumeData.Phone}</p>
               <p>{resumeData.Email}</p>
             </div>
           </div>
-          <div className="smallCard blackTitle AboutMe">
-            <h3>About Me:</h3>
+          <div className="smallCardReally blackTitle AboutMe">
+            <h3 className={styles.blackTitle}>About Me:</h3>
             <p>{resumeData.AboutMe}</p>
           </div>
           <ul>
             <div className='educationDetails'>
-              <h3 className='blackTitle'>Education</h3>
-              {resumeData.Education.map((element, index) => (
+              <h3 className={styles.blackTitle}>Education</h3>
+              {resumeData.Education?.map((element, index) => (
                 <SmallCardJobs
                   key={index}
                   title={`${element.Degree} at ${element.School}`}
@@ -100,8 +105,8 @@ export default function BigResume({ setPath }) {
               ))}
             </div>
             <div className='jobsDetails'>
-              <h3 className='blackTitle'>Experience</h3>
-              {resumeData.jobs.map((element, index) => (
+              <h3 className={styles.blackTitle}>Experience</h3>
+              {resumeData.jobs?.map((element, index) => (
                 <SmallCardEducation key={index}
                   title={element.Role.toUpperCase()}
                   content={`${element.CompanyName}`}

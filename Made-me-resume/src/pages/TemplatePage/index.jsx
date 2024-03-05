@@ -16,7 +16,7 @@ export default function TemplateContainer({ counter, setCounter }) {
           <div className='containerTemplateBtn'>
             <Template1 />
             <Template2 />
-            <Template3 />
+            {/* <Template3 /> */}
           </div>
           <button className='form-btn btNext' onClick={() => setCounter(counter + 1)}>next</button>
         </div>

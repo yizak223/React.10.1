@@ -17,20 +17,34 @@ export default function Links() {
                 console.error('There was a problem with the fetch operation:', error);
             });
     }
-
-
+    //DELETE method
+    const deleteHandle = async (link) => {
+        console.log(link);
+        try {
+            const res = await fetch(`http://localhost:3100/api/v1/links/${link._id}`,{method:'DELETE'})
+            
+            if(res.status === 200) {
+               const filtered = Links.filter(item => {
+                return item._id !== link._id
+               })
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
     useEffect(() => {
         fetchData()
         console.log(Links);
     }, [])
+
     return (
         <div>
             {Links?.map((link, index) => {
                 return (
-                    <UserLinks link={link} key={index} />
+                    <UserLinks link={link} key={index} deleteHandle={deleteHandle}/>
                 )
             })}
-            <Form/>
+            <Form />
         </div>
     )
 }

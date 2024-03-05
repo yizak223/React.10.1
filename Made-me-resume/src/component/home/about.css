@@ -1,0 +1,22 @@
+@media only screen and (max-width: 768px){
+    .hero{
+        flex-direction: column;
+        padding-top: 2vh;
+        text-align: center;
+    }
+    iframe{
+        width: 80vw;
+    }
+    .steps{
+        flex-direction: column;
+        align-items: center;
+        gap: 4rem;
+    }
+    .step1 ,.step2, .step3{
+        width: fit-content;
+    }
+    .steps img{
+        height: 12vh;
+        width: fit-content;
+    }
+}

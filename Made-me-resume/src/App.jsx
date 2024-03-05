@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
         <NavBar path={path} setPath={setPath} />
         <Routes>
           <Route path="/" element={
@@ -38,7 +38,7 @@ function App() {
           {!user ? <Route path="/Authentication" element={
             <Authentication path={path} setPath={setPath}/>} /> : null}
         </Routes>
-      </BrowserRouter>
+      {/* </BrowserRouter> */}
     </>
   )
 }

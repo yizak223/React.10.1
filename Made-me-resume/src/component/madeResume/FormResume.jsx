@@ -17,7 +17,7 @@ export default function FormResume() {
   const { userName, user, userId } = useContext(UserContext)
   const { formData, setFormData } = useFormData();
   const [selectedOption, setSelectedOption] = useState(null);
-  const [counter, setCounter] = useState(0)
+  const [counter, setCounter] = useState(1)
   const [counter2, setCounter2] = useState(0)
   const [previewMode, setPreviewMode] = useState(false)
 
@@ -88,7 +88,7 @@ export default function FormResume() {
           <form className='formResume' onSubmit={handleSubmit}>
             {renderCurrentStep()}
             <div className='containerSentBtn'>
-              {0 < counter && counter < 4 ?
+              {1 < counter && counter < 4 ?
                 <button type='button' className="form-btn" onClick={() => setCounter(counter - 1)}>
                   Previos
                 </button>

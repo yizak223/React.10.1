@@ -83,6 +83,7 @@ export default function Template1() {
               </div>
             </div>
             <div className="smallCardRealy blackTitle">
+              <h3>About Me:</h3>
               <p>{res.AboutMe}</p>
             </div>
             <ul>

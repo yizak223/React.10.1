@@ -14,6 +14,7 @@ export default function Form() {
     setData(newData)
     console.log(newData);
   }
+  //Post data
   const SubmitHandle = async(e)=>{
     e.preventDefault()
     await Axios.post(url,{
@@ -27,14 +28,15 @@ export default function Form() {
         console.log(res.data);
       })
   }
+ 
 
   return (
     <form onSubmit={SubmitHandle}>
       <input onChange={handleChange} name='title' type="text" placeholder='Title' />
       <input onChange={handleChange} name='link' type="text" placeholder='Link' />
       <input onChange={handleChange} name='description' type="text" placeholder='description' />
-      <input onChange={handleChange} name='idUser' type="text" placeholder=''/>
-      <button >sent</button>
+      <input onChange={handleChange} name='idUser' type="text" placeholder='idUser'/>
+      <button>sent</button>
     </form>
   )
 }

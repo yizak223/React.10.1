@@ -1,6 +1,7 @@
 import React from 'react'
 import Footer from '../Fotter'
 import { useNavigate } from 'react-router-dom'
+import './about.css'
 
 export default function About() {
   const navigate = useNavigate()
@@ -65,10 +66,10 @@ export default function About() {
           </div>
         </div>
         <div className='BuiltResume'>
-          <p onClick={goForm} className="btn red " href="#">BUILT MY RESUME</p>
+          <p onClick={goForm} className="btn red " href="#">BUILD MY RESUME</p>
         </div>
       </div>
-    <Footer/>
+    <Footer className='footerAbout'/>
     </>
 
 

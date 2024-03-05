@@ -1,0 +1,60 @@
+.logo {
+    height: 6vh;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    border-radius: 3px;
+}
+
+@media only screen and (max-width: 768px) {
+    .responsiveNav {
+        display: none;
+    }
+
+    .responsiveNavOpen {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .item {
+        gap: 0;
+        justify-content: space-between;
+        align-content: space-between;
+        width: 95%;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

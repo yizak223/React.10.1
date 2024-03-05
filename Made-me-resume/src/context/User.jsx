@@ -3,6 +3,7 @@ import { auth } from "../config/firebaseConfig";
 import { signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { dB } from "../config/firebaseConfig";
 import { addDoc, collection, onSnapshot, doc, deleteDoc, query, getDocs, where, serverTimestamp, orderBy, updateDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 export const UserContext = createContext({})
 
 //* login להתחבר 
@@ -13,6 +14,7 @@ export default function UserProvider({ children }) {
     const [userId, setUserId] = useState(null);
     const [userName, setUserName] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -41,6 +43,7 @@ export default function UserProvider({ children }) {
                 console.log(user);
                 const collectionRef = collection(dB, 'UserRole')
                 const docRef = await addDoc(collectionRef, {email: email, password: password,role:'user'})
+                navigate('/MadeMeResume')
             })
             .catch((error) => {
                 alert('this email is already registered')
@@ -57,6 +60,7 @@ export default function UserProvider({ children }) {
                 // Signed in 
                 const user = userCredential.user;
                 console.log(user)
+                navigate('/MadeMeResume')
             })
             .catch((error) => {
                 alert('this email is not registered')
@@ -73,6 +77,7 @@ export default function UserProvider({ children }) {
                 alert('Your account has been signed out')
                 setUser(null);
                 setUserName(null);
+                navigate('/')
             })
             .catch((error) => {
                 console.log(error);

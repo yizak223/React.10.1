@@ -6,6 +6,7 @@ import { useState } from "react";
 import { UserContext } from '../../context/User'
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../component/navBar";
+import styles from './authentication.module.css'
 
 export default function Authentication({ path, setPath }) {
     const navigate = useNavigate();
@@ -31,14 +32,14 @@ export default function Authentication({ path, setPath }) {
         console.log(formDataSignUp)
         setFormDatasSignUp([...formDatasSignUp, { ...formDataSignUp }])
         register(formDataSignUp.email, formDataSignUp.password1)
-        navigate('/MadeMeResume');
+        // navigate('/MadeMeResume');
     }
     const submitFormLogIn = (e) => {
         e.preventDefault()
         console.log(formDataLogIn)
         setFormDatasLogIn([...formDatasLogIn, { ...formDataLogIn }])
         login(formDataLogIn.email, formDataLogIn.password)
-        navigate('/MadeMeResume');
+        // navigate('/MadeMeResume');
     }
     return (
         <>
@@ -65,7 +66,9 @@ export default function Authentication({ path, setPath }) {
                 }
 
             </div>
+            <div className='footerAuth'>
             <Footer />
+            </div>
         </>
     )
 }
