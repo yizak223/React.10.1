@@ -13,11 +13,11 @@ import './formResume.css'
 import { addDoc, collection, onSnapshot, doc, deleteDoc, query, getDocs, where, serverTimestamp, orderBy, updateDoc } from "firebase/firestore";
 
 
-export default function FormResume() {
+export default function FormResume({ setCounter, counter }) {
   const { userName, user, userId } = useContext(UserContext)
   const { formData, setFormData } = useFormData();
   const [selectedOption, setSelectedOption] = useState(null);
-  const [counter, setCounter] = useState(1)
+
   const [counter2, setCounter2] = useState(0)
   const [previewMode, setPreviewMode] = useState(false)
 
@@ -91,13 +91,13 @@ export default function FormResume() {
                 </button>
                 : null
               }
-              {0 < counter && counter < 3 ? 
+              {0 < counter && counter < 3 ?
                 <p className="form-btn pBtn" onClick={() => setCounter(counter + 1)}>
                   Next
                 </p>
-              : null} 
+                : null}
               {
-               counter == 3  && counter2 == 0 ?
+                counter == 3 && counter2 == 0 ?
                   <>
                     <button className='form-btn submitBtn' type='submit'>Make your resume</button>
                   </>
