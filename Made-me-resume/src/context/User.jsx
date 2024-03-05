@@ -40,7 +40,6 @@ export default function UserProvider({ children }) {
                 alert('you have successfully signed up')
                 setUser(userCredential)
                 const user = userCredential.user;
-                console.log(user);
                 const collectionRef = collection(dB, 'UserRole')
                 const docRef = await addDoc(collectionRef, {email: email, password: password,role:'user'})
                 navigate('/MadeMeResume')
@@ -59,7 +58,6 @@ export default function UserProvider({ children }) {
                 setUser(userCredential)
                 // Signed in 
                 const user = userCredential.user;
-                console.log(user)
                 navigate('/MadeMeResume')
             })
             .catch((error) => {

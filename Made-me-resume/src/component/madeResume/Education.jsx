@@ -9,7 +9,6 @@ export default function Education() {
     const handleInputChange = (e) => {
         educationData[e.target.name] = e.target.value
         setEducationData({ ...educationData })
-        console.log(educationData);
       };
 
       const addDegree = (e) => {

@@ -36,8 +36,7 @@ export default function ExampleResProvider  ({ children })  { //to wrap
         })
     }
     ,[])
-    // const resume = 
-    // console.log(resume);
+
     return(
         <ExampleResContext.Provider value={resume}>
             {children}

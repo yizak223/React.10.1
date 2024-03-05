@@ -10,7 +10,6 @@ export default function WorkExperince(props) {
   const handleInputChange = (e) => {
     workExperince[e.target.name] = e.target.value
     setWorkExperince({ ...workExperince })
-    console.log(workExperince);
   };
 
   const addJob = (e) => {

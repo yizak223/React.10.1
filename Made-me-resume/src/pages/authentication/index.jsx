@@ -20,23 +20,19 @@ export default function Authentication({ path, setPath }) {
     const handleInputChangeRegister = (e) => {
         formDataSignUp[e.target.name] = e.target.value
         setFormDataSignUp({ ...formDataSignUp })
-        console.log(formDataSignUp);
     }
     const handleInputChangeLogIn = (e) => {
         formDataLogIn[e.target.name] = e.target.value
         setFormDataLogIn({ ...formDataLogIn })
-        console.log(formDataLogIn);
     }
     const submitFormRegister = (e) => {
         e.preventDefault()
-        console.log(formDataSignUp)
         setFormDatasSignUp([...formDatasSignUp, { ...formDataSignUp }])
         register(formDataSignUp.email, formDataSignUp.password1)
         // navigate('/MadeMeResume');
     }
     const submitFormLogIn = (e) => {
         e.preventDefault()
-        console.log(formDataLogIn)
         setFormDatasLogIn([...formDatasLogIn, { ...formDataLogIn }])
         login(formDataLogIn.email, formDataLogIn.password)
         // navigate('/MadeMeResume');

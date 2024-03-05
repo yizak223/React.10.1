@@ -24,14 +24,12 @@ export default function FormResume() {
   const handleInputChange = (e) => {
     formData[e.target.name] = e.target.value
     setFormData({ ...formData })
-    console.log(formData);
   }
 
   const handleOptionChange = (e) => {
     setSelectedOption(e.target.value);
     formData[e.target.name] = e.target.value
     setFormData({ ...formData })
-    console.log(formData);
   };
 
   const renderCurrentStep = () => {
@@ -80,7 +78,6 @@ export default function FormResume() {
   // if (counter == 3) {
   //   setCounter2(1)
   // }
-  console.log(counter2);
   return (
     <>
       {!previewMode ?
@@ -95,11 +92,9 @@ export default function FormResume() {
                 : null
               }
               {0 < counter && counter < 3 ? 
-                // <div>
                 <p className="form-btn pBtn" onClick={() => setCounter(counter + 1)}>
                   Next
                 </p>
-                // </div>
               : null} 
               {
                counter == 3  && counter2 == 0 ?

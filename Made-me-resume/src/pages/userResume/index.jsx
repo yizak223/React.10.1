@@ -28,14 +28,12 @@ export default function UserResume() {
           // const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
           // setUserResumeData(results);
 
-          console.log(userResumeData);
         }
       });
     };
 
     fetchData();
   }, []);
-  console.log(userResumeData);
 
 
   return (

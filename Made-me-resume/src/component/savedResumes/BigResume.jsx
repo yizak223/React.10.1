@@ -60,9 +60,7 @@ export default function BigResume({ setPath }) {
         const docSnapshot = await getDoc(resumeDoc)
         if (docSnapshot.exists()) {
           const docData = docSnapshot.data()
-          console.log(docData);
           setResumeData(docData)
-          console.log(resumeData);
         }
         else {
           console.log("No such document!");
